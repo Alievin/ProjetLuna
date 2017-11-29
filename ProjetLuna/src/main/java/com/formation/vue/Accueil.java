@@ -84,12 +84,15 @@ public class Accueil extends JFrame {
 		lblSarlLuna.setBackground(Color.LIGHT_GRAY);
 		panel_Exit.add(lblSarlLuna);
 		
-		JCheckBox chckbxExit = new JCheckBox("Quitter");
-		chckbxExit.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		chckbxExit.setForeground(Color.WHITE);
-		chckbxExit.setBackground(Color.GRAY);
-		chckbxExit.setBounds(25, 400, 125, 40);
-		panel_Exit.add(chckbxExit);
+		JButton btnQuitter = new JButton("Quitter");
+		btnQuitter.setFocusPainted(false);
+		btnQuitter.setFont(new Font("Tahoma", Font.BOLD, 15));
+		btnQuitter.setPressedIcon(new ImageIcon(Accueil.class.getResource("/images/connection/Stop-48-actif.png")));
+		btnQuitter.setIcon(new ImageIcon(Accueil.class.getResource("/images/connection/Stop-48.png")));
+		btnQuitter.setBorder(new EmptyBorder(0, 0, 0, 0));
+		btnQuitter.setContentAreaFilled(false);
+		btnQuitter.setBounds(10, 368, 130, 69);
+		panel_Exit.add(btnQuitter);
 		
 		Panel panel_Menu = new Panel();
 		panel_Menu.setBounds(150, 0, 494, 500);
