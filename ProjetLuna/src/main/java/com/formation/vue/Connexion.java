@@ -22,12 +22,16 @@ import javax.swing.border.BevelBorder;
 import javax.swing.JCheckBox;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import java.awt.Dimension;
 
 public class Connexion extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JPasswordField passwordField;
+	private JTextField textField_Username;
+	private JPasswordField passwordField_Password;
 
 	/**
 	 * Launch the application.
@@ -49,91 +53,141 @@ public class Connexion extends JFrame {
 	 * Create the frame.
 	 */
 	public Connexion() {
-		setResizable(false);
+		setMinimumSize(new Dimension(450, 265));
 		setTitle("SARL LUNA");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Connexion.class.getResource("/images/Moon-32.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 302);
+		setBounds(100, 100, 450, 265);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.LIGHT_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Connexion au programme");
-		lblNewLabel.setIcon(new ImageIcon(Connexion.class.getResource("/images/connection/Shopping-Cart-05-48.png")));
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblNewLabel.setBounds(108, 4, 253, 35);
-		contentPane.add(lblNewLabel);
+		JLabel lbl_Connection = new JLabel("Connexion au programme");
+		lbl_Connection.setIcon(new ImageIcon(Connexion.class.getResource("/images/connection/Shopping-Cart-05-48.png")));
+		lbl_Connection.setFont(new Font("Tahoma", Font.BOLD, 15));
 		
-		JPanel panel = new JPanel();
-		panel.setBorder(new MatteBorder(5, 5, 5, 5, (Color) new Color(0, 191, 255)));
-		panel.setBackground(Color.WHITE);
-		panel.setBounds(10, 50, 424, 122);
-		contentPane.add(panel);
-		panel.setLayout(null);
+		JPanel panel_Login = new JPanel();
+		panel_Login.setBorder(new MatteBorder(5, 5, 5, 5, (Color) new Color(51, 181, 229)));
+		panel_Login.setBackground(Color.WHITE);
 		
-		JLabel lblNewLabel_1 = new JLabel("Nom d'utilisateur");
-		lblNewLabel_1.setVerticalTextPosition(SwingConstants.BOTTOM);
-		lblNewLabel_1.setIcon(new ImageIcon(Connexion.class.getResource("/images/connection/Windows-8-Login-16.png")));
-		lblNewLabel_1.setHorizontalTextPosition(SwingConstants.LEADING);
-		lblNewLabel_1.setBounds(10, 11, 121, 21);
-		panel.add(lblNewLabel_1);
+		JLabel lbl_Username = new JLabel("Nom d'utilisateur");
+		lbl_Username.setVerticalTextPosition(SwingConstants.BOTTOM);
+		lbl_Username.setIcon(new ImageIcon(Connexion.class.getResource("/images/connection/Windows-8-Login-16.png")));
+		lbl_Username.setHorizontalTextPosition(SwingConstants.LEADING);
 		
-		JLabel lblMotDePasse = new JLabel("Mot de passe");
-		lblMotDePasse.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblMotDePasse.setHorizontalTextPosition(SwingConstants.LEADING);
-		lblMotDePasse.setVerticalTextPosition(SwingConstants.BOTTOM);
-		lblMotDePasse.setIcon(new ImageIcon(Connexion.class.getResource("/images/connection/Key-16.png")));
-		lblMotDePasse.setBounds(10, 34, 115, 21);
-		panel.add(lblMotDePasse);
+		JLabel lbl_Password = new JLabel("Mot de passe");
+		lbl_Password.setHorizontalAlignment(SwingConstants.TRAILING);
+		lbl_Password.setHorizontalTextPosition(SwingConstants.LEADING);
+		lbl_Password.setVerticalTextPosition(SwingConstants.BOTTOM);
+		lbl_Password.setIcon(new ImageIcon(Connexion.class.getResource("/images/connection/Key-16.png")));
 		
-		textField = new JTextField();
-		textField.setBounds(126, 11, 288, 21);
-		panel.add(textField);
-		textField.setColumns(10);
+		textField_Username = new JTextField();
+		textField_Username.setColumns(10);
 		
-		passwordField = new JPasswordField();
-		passwordField.setBounds(126, 34, 288, 21);
-		panel.add(passwordField);
+		passwordField_Password = new JPasswordField();
 		
-		JLabel lblVeuillezSaisirUn = new JLabel("Veuillez saisir un utilisateur");
-		lblVeuillezSaisirUn.setBounds(10, 66, 115, 45);
-		panel.add(lblVeuillezSaisirUn);
+		JLabel lbl_Instruction = new JLabel("<html>Veuillez saisir <br>le nom de utilisateur et le mot de passe<br>pour acc\u00E9der \u00E0 l'application</html>");
+		lbl_Instruction.setForeground(Color.GRAY);
+		lbl_Instruction.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		GroupLayout gl_panel_Login = new GroupLayout(panel_Login);
+		gl_panel_Login.setHorizontalGroup(
+			gl_panel_Login.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_Login.createSequentialGroup()
+					.addGap(5)
+					.addGroup(gl_panel_Login.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel_Login.createSequentialGroup()
+							.addComponent(lbl_Username, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED, 293, Short.MAX_VALUE))
+						.addGroup(gl_panel_Login.createSequentialGroup()
+							.addComponent(lbl_Instruction, GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
+							.addGap(218))
+						.addGroup(gl_panel_Login.createSequentialGroup()
+							.addComponent(lbl_Password, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE)
+							.addGap(6)
+							.addGroup(gl_panel_Login.createParallelGroup(Alignment.LEADING)
+								.addComponent(passwordField_Password, GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
+								.addComponent(textField_Username, GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))))
+					.addGap(5))
+		);
+		gl_panel_Login.setVerticalGroup(
+			gl_panel_Login.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_Login.createSequentialGroup()
+					.addGap(6)
+					.addGroup(gl_panel_Login.createParallelGroup(Alignment.LEADING)
+						.addComponent(textField_Username, GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+						.addComponent(lbl_Username, GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE))
+					.addGap(2)
+					.addGroup(gl_panel_Login.createParallelGroup(Alignment.LEADING)
+						.addComponent(passwordField_Password, GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+						.addComponent(lbl_Password, GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE))
+					.addGap(11)
+					.addComponent(lbl_Instruction, GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
+					.addGap(6))
+		);
+		panel_Login.setLayout(gl_panel_Login);
 		
 		JButton btn_Validate = new JButton("Valider");
 		btn_Validate.setBorder(new EmptyBorder(0, 0, 0, 0));
 		btn_Validate.setFocusPainted(false);
 		btn_Validate.setHorizontalTextPosition(SwingConstants.LEFT);
-		btn_Validate.setBackground(new Color(0, 191, 255));
+		btn_Validate.setBackground(new Color(51, 181, 229));
 		btn_Validate.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 		btn_Validate.setForeground(Color.WHITE);
 		btn_Validate.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		btn_Validate.setActionCommand("");
 		btn_Validate.setPressedIcon(new ImageIcon(Connexion.class.getResource("/images/connection/Power-48-actif.png")));
 		btn_Validate.setIcon(new ImageIcon(Connexion.class.getResource("/images/connection/Power-48.png")));
-		btn_Validate.setBounds(313, 205, 121, 48);
-		contentPane.add(btn_Validate);
 		
-		JButton btnParametres = new JButton("Param\u00E8tres");
-		btnParametres.setHorizontalAlignment(SwingConstants.LEFT);
-		btnParametres.setHorizontalTextPosition(SwingConstants.RIGHT);
-		btnParametres.setPressedIcon(new ImageIcon(Connexion.class.getResource("/images/connection/Customize-01-48-actif.png")));
-		btnParametres.setContentAreaFilled(false);
-		btnParametres.setDefaultCapable(false);
-		btnParametres.setFocusPainted(false);
-		btnParametres.setOpaque(false);
-		btnParametres.setBorder(new EmptyBorder(0, 0, 0, 0));
-		btnParametres.setIcon(new ImageIcon(Connexion.class.getResource("/images/connection/Customize-01-48.png")));
-		btnParametres.setBounds(10, 204, 151, 48);
-		contentPane.add(btnParametres);
+		JButton btn_Settings = new JButton("Param\u00E8tres");
+		btn_Settings.setHorizontalAlignment(SwingConstants.LEFT);
+		btn_Settings.setHorizontalTextPosition(SwingConstants.RIGHT);
+		btn_Settings.setPressedIcon(new ImageIcon(Connexion.class.getResource("/images/connection/Customize-01-48-actif.png")));
+		btn_Settings.setContentAreaFilled(false);
+		btn_Settings.setDefaultCapable(false);
+		btn_Settings.setFocusPainted(false);
+		btn_Settings.setOpaque(false);
+		btn_Settings.setBorder(new EmptyBorder(0, 0, 0, 0));
+		btn_Settings.setIcon(new ImageIcon(Connexion.class.getResource("/images/connection/Customize-01-48.png")));
 		
-		JButton btnQuitter = new JButton("Quitter");
-		btnQuitter.setPressedIcon(new ImageIcon(Connexion.class.getResource("/images/connection/Stop-48-actif.png")));
-		btnQuitter.setIcon(new ImageIcon(Connexion.class.getResource("/images/connection/Stop-48.png")));
-		btnQuitter.setContentAreaFilled(false);
-		btnQuitter.setBorder(new EmptyBorder(0, 0, 0, 0));
-		btnQuitter.setBounds(196, 205, 107, 48);
-		contentPane.add(btnQuitter);
+		JButton btn_Exit = new JButton("Quitter");
+		btn_Exit.setFocusPainted(false);
+		btn_Exit.setPressedIcon(new ImageIcon(Connexion.class.getResource("/images/connection/Stop-48-actif.png")));
+		btn_Exit.setIcon(new ImageIcon(Connexion.class.getResource("/images/connection/Stop-48.png")));
+		btn_Exit.setContentAreaFilled(false);
+		btn_Exit.setBorder(new EmptyBorder(0, 0, 0, 0));
+		GroupLayout gl_contentPane = new GroupLayout(contentPane);
+		gl_contentPane.setHorizontalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(103)
+					.addComponent(lbl_Connection, GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
+					.addGap(78))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(5)
+					.addComponent(panel_Login, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addGap(5))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(5)
+					.addComponent(btn_Settings, GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+					.addGap(35)
+					.addComponent(btn_Exit, GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
+					.addGap(10)
+					.addComponent(btn_Validate, GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+					.addGap(5))
+		);
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addComponent(lbl_Connection, GroupLayout.PREFERRED_SIZE, 35, Short.MAX_VALUE)
+					.addGap(11)
+					.addComponent(panel_Login, GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+					.addGap(11)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(btn_Settings, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(btn_Exit, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(btn_Validate, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+		);
+		contentPane.setLayout(gl_contentPane);
 	}
 }
