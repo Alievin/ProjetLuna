@@ -17,6 +17,10 @@ public class User {
 		this.role = role;
 	}
 
+	public User() {
+		// TODO Auto-generated constructor stub
+	}
+
 	// - - GETTER & SETTER DE L'ATTRIBUT "id" - - //
 	public int getId() {
 		return id;

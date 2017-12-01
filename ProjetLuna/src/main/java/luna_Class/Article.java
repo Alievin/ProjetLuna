@@ -1,6 +1,10 @@
 package luna_Class;
 
 public class Article {
+	public Article() {
+		super();
+	}
+
 	//
 	// - - DÉCLARATION DES ATTRIBUTS DE LA CLASSE "article" - - //
 	private int id;
@@ -16,7 +20,7 @@ public class Article {
 		super();
 		this.id = id;
 		this.codeCatégorie = codeCatégorie;
-		Catégorie = catégorie;
+		this.Catégorie = catégorie;
 		this.designation = designation;
 		this.quantitéstock = quantitéstock;
 		this.prixUnitaire = prixUnitaire;

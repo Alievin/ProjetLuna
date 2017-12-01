@@ -1,6 +1,5 @@
 package luna_DAO;
 import java.util.List;
-
 import luna_Class.Command;
 
 public interface CommandDAO {

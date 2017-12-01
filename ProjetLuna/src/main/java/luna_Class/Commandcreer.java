@@ -17,6 +17,10 @@ public class Commandcreer {
 		this.quantité = quantité;
 	}
 
+	public Commandcreer() {
+		// TODO Auto-generated constructor stub
+	}
+
 	// - - GETTER & SETTER DE L'ATTRIBUT "id" - - //
 	public int getId() {
 		return id;

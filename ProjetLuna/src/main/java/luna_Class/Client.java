@@ -3,6 +3,10 @@ package luna_Class;
 import java.util.Date;
 
 public class Client {
+	public Client() {
+		super();
+	}
+
 	////////
 	// - - DÉCLARATION DES ATTRIBUTS DE LA CLASSE "client" - - //
 	private int id;
@@ -11,13 +15,14 @@ public class Client {
 	private String prenom;
 	private String nom;
 	private String adresse;
+	private int codePostal;
 	private int fixe;
 	private int mobile;
 	private String email;
 	private String remarques;
 
 	// CONSTRUCTEUR
-	public Client(int id, Date dateCreation, int cartedefidelité, String prenom, String nom, String adresse, int fixe,
+	public Client(int id, Date dateCreation, int cartedefidelité, String prenom, String nom, String adresse, int codePostal, int fixe,
 			int mobile, String email, String remarques) {
 		super();
 		this.id = id;
@@ -26,6 +31,7 @@ public class Client {
 		this.prenom = prenom;
 		this.nom = nom;
 		this.adresse = adresse;
+		this.codePostal = codePostal;
 		this.fixe = fixe;
 		this.mobile = mobile;
 		this.email = email;
@@ -85,7 +91,15 @@ public class Client {
 	public void setAdresse(String adresse) {
 		this.adresse = adresse;
 	}
+	
+	// - - GETTER & SETTER DE L'ATTRIBUT "codePostal" - - //
+	public int getCodePostal() {
+		return codePostal;
+	}
 
+	public void setCodePostal(int codePostal) {
+		this.codePostal = codePostal;
+	}
 	// - - GETTER & SETTER DE L'ATTRIBUT "fixe" - - //
 	public int getFixe() {
 		return fixe;

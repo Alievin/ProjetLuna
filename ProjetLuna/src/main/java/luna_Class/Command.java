@@ -19,6 +19,10 @@ public class Command {
 		this.datecommand = datecommand;
 	}
 
+	public Command() {
+		// TODO Auto-generated constructor stub
+	}
+
 	// - - GETTER & SETTER DE L'ATTRIBUT "id" - - //
 	public int getId() {
 		return id;
