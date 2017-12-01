@@ -7,7 +7,7 @@ import java.sql.Statement;
 import com.mysql.jdbc.Connection;
 
 public class Connect {
-
+	//
 	public static void main(String[] args) {
 		try {
 			// Driver SQL

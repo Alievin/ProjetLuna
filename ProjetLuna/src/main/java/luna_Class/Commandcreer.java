@@ -1,7 +1,7 @@
 package luna_Class;
 
 public class Commandcreer {
-
+	//
 	// - - DÉCLARATION DES ATTRIBUTS DE LA CLASSE "commandcreer" - - //
 	private int id;
 	private int idcommand;

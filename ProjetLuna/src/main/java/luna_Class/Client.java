@@ -3,7 +3,7 @@ package luna_Class;
 import java.util.Date;
 
 public class Client {
-
+	//
 	// - - DÉCLARATION DES ATTRIBUTS DE LA CLASSE "client" - - //
 	private int id;
 	private Date dateCreation;

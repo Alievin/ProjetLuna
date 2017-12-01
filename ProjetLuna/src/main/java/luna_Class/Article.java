@@ -1,7 +1,7 @@
 package luna_Class;
 
 public class Article {
-
+	//
 	// - - DÉCLARATION DES ATTRIBUTS DE LA CLASSE "article" - - //
 	private int id;
 	private int codeCatégorie;

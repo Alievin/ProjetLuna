@@ -1,7 +1,7 @@
 package luna_Class;
 
 public class User {
-
+	//
 	// - - DÉCLARATION DES ATTRIBUTS DE LA CLASSE "user" - - //
 	private int id;
 	private String login;
