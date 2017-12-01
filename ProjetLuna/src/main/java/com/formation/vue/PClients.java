@@ -32,12 +32,14 @@ public class PClients extends JPanel {
 	private JTextField textField_4;
 	private JTextField textField_5;
 	private JTextField textField_6;
+	private JTextField textField_7;
 	private JTable table;
 
 	/**
 	 * Create the panel.
 	 */
 	public PClients() {
+		setBackground(new Color(230, 230, 250));
 		
 		Panel panel_Menu = new Panel();
 		panel_Menu.setBackground(new Color(0, 153, 153));
@@ -67,6 +69,10 @@ public class PClients extends JPanel {
 		btn_Search.setBorder(new EmptyBorder(0, 0, 0, 0));
 		
 		JButton btn_Edit = new JButton("Modifier");
+		btn_Edit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btn_Edit.setForeground(Color.WHITE);
 		btn_Edit.setIcon(new ImageIcon(PClients.class.getResource("/images/gestion/Data-Edit-48.png")));
 		btn_Edit.setPressedIcon(new ImageIcon(PClients.class.getResource("/images/gestion/Data-Edit-48-actif.png")));
@@ -132,52 +138,61 @@ public class PClients extends JPanel {
 		GroupLayout gl_panel_Menu = new GroupLayout(panel_Menu);
 		gl_panel_Menu.setHorizontalGroup(
 			gl_panel_Menu.createParallelGroup(Alignment.LEADING)
-				.addComponent(lbl_Clients, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
+				.addComponent(lbl_Clients, GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
 				.addGroup(gl_panel_Menu.createSequentialGroup()
 					.addGap(10)
-					.addComponent(btn_Add, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE))
+					.addComponent(btn_Add, GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+					.addGap(10))
 				.addGroup(gl_panel_Menu.createSequentialGroup()
 					.addGap(10)
-					.addComponent(btn_Search, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE))
+					.addComponent(btn_print, GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+					.addGap(10))
 				.addGroup(gl_panel_Menu.createSequentialGroup()
-					.addGap(10)
-					.addGroup(gl_panel_Menu.createParallelGroup(Alignment.LEADING)
-						.addComponent(btn_Delete, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btn_Edit, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap()
+					.addComponent(btn_Delete, GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+					.addContainerGap())
 				.addGroup(gl_panel_Menu.createSequentialGroup()
-					.addGap(10)
-					.addGroup(gl_panel_Menu.createParallelGroup(Alignment.LEADING)
-						.addComponent(btn_Export, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btn_print, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btn_Preview, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap()
+					.addComponent(btn_Edit, GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+					.addContainerGap())
 				.addGroup(gl_panel_Menu.createSequentialGroup()
-					.addGap(10)
-					.addComponent(btnCcueil, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap()
+					.addComponent(btn_Search, GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+					.addContainerGap())
+				.addGroup(gl_panel_Menu.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(btn_Preview, GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+					.addContainerGap())
+				.addGroup(gl_panel_Menu.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(btn_Export, GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+					.addContainerGap())
+				.addGroup(Alignment.TRAILING, gl_panel_Menu.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(btnCcueil, GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+					.addContainerGap())
 		);
 		gl_panel_Menu.setVerticalGroup(
 			gl_panel_Menu.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_Menu.createSequentialGroup()
-					.addComponent(lbl_Clients, GroupLayout.PREFERRED_SIZE, 74, GroupLayout.PREFERRED_SIZE)
+					.addComponent(lbl_Clients, GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
 					.addGap(11)
-					.addComponent(btn_Add)
-					.addGap(10)
-					.addComponent(btn_Search)
-					.addGroup(gl_panel_Menu.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel_Menu.createSequentialGroup()
-							.addGap(44)
-							.addComponent(btn_Delete))
-						.addComponent(btn_Edit))
-					.addGap(52)
-					.addGroup(gl_panel_Menu.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel_Menu.createSequentialGroup()
-							.addGap(86)
-							.addComponent(btn_Export))
-						.addGroup(gl_panel_Menu.createSequentialGroup()
-							.addGap(45)
-							.addComponent(btn_print))
-						.addComponent(btn_Preview))
-					.addGap(22)
-					.addComponent(btnCcueil))
+					.addComponent(btn_Add, GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+					.addGap(18)
+					.addComponent(btn_Search, GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+					.addGap(3)
+					.addComponent(btn_Edit, GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+					.addGap(1)
+					.addComponent(btn_Delete, GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+					.addGap(28)
+					.addComponent(btn_Preview, GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+					.addGap(11)
+					.addComponent(btn_print, GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(btn_Export, GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(btnCcueil)
+					.addGap(8))
 		);
 		panel_Menu.setLayout(gl_panel_Menu);
 		
@@ -192,7 +207,7 @@ public class PClients extends JPanel {
 		JLabel lbl_Firstname = new JLabel("Pr\u00E9nom");
 		lbl_Firstname.setHorizontalAlignment(SwingConstants.RIGHT);
 		
-		JLabel lbl_Address = new JLabel("Addresse");
+		JLabel lbl_Address = new JLabel("Adresse");
 		lbl_Address.setHorizontalAlignment(SwingConstants.RIGHT);
 		
 		JLabel lbl_Phone = new JLabel("Fixe");
@@ -204,16 +219,13 @@ public class PClients extends JPanel {
 		JLabel lbl_Note = new JLabel("Remarques");
 		lbl_Note.setHorizontalAlignment(SwingConstants.RIGHT);
 		
-		JLabel lbl_Create = new JLabel("Cr\u00E9e le");
-		lbl_Create.setHorizontalAlignment(SwingConstants.RIGHT);
-		
 		JLabel lbl_Name = new JLabel("Nom");
 		lbl_Name.setHorizontalAlignment(SwingConstants.RIGHT);
 		
 		JLabel lbl_Mobile = new JLabel("Mobile");
 		lbl_Mobile.setHorizontalAlignment(SwingConstants.RIGHT);
 		
-		Checkbox checkbox = new Checkbox("Carte de fid\u00E9lit\u00E9 a  a");
+		Checkbox checkbox = new Checkbox("Carte de fid\u00E9lit\u00E9");
 		
 		textField = new JTextField();
 		textField.setColumns(10);
@@ -240,128 +252,25 @@ public class PClients extends JPanel {
 		textPane.setCaretColor(Color.LIGHT_GRAY);
 		textPane.setBorder(new LineBorder(Color.LIGHT_GRAY));
 		textPane.setBackground(Color.WHITE);
-		GroupLayout gl_panel = new GroupLayout(panel);
-		gl_panel.setHorizontalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addGap(10)
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel.createSequentialGroup()
-							.addComponent(lbl_Code, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
-							.addGap(1)
-							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_panel.createSequentialGroup()
-									.addGap(120)
-									.addComponent(lbl_Create, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE))
-								.addComponent(textField, GroupLayout.PREFERRED_SIZE, 141, GroupLayout.PREFERRED_SIZE))
-							.addGap(122)
-							.addComponent(checkbox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_panel.createSequentialGroup()
-							.addComponent(lbl_Firstname, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
-							.addGap(1)
-							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-								.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 141, GroupLayout.PREFERRED_SIZE)
-								.addGroup(gl_panel.createSequentialGroup()
-									.addGap(120)
-									.addComponent(lbl_Name, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)))
-							.addGap(2)
-							.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, 215, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_panel.createSequentialGroup()
-							.addComponent(lbl_Address, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
-							.addGap(1)
-							.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, 398, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_panel.createSequentialGroup()
-							.addComponent(lbl_Phone, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
-							.addGap(1)
-							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_panel.createSequentialGroup()
-									.addGap(120)
-									.addComponent(lbl_Mobile, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE))
-								.addComponent(textField_5, GroupLayout.PREFERRED_SIZE, 141, GroupLayout.PREFERRED_SIZE))
-							.addGap(3)
-							.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, 214, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_panel.createSequentialGroup()
-							.addComponent(lbl_Email, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
-							.addGap(1)
-							.addComponent(textField_6, GroupLayout.PREFERRED_SIZE, 398, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_panel.createSequentialGroup()
-							.addComponent(lbl_Note, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
-							.addGap(1)
-							.addComponent(textPane, GroupLayout.PREFERRED_SIZE, 398, GroupLayout.PREFERRED_SIZE))))
-		);
-		gl_panel.setVerticalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addGap(6)
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel.createSequentialGroup()
-							.addGap(4)
-							.addComponent(lbl_Code))
-						.addGroup(gl_panel.createSequentialGroup()
-							.addGap(1)
-							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_panel.createSequentialGroup()
-									.addGap(3)
-									.addComponent(lbl_Create))
-								.addComponent(textField, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE)))
-						.addComponent(checkbox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(7)
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel.createSequentialGroup()
-							.addGap(5)
-							.addComponent(lbl_Firstname))
-						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE)
-						.addGroup(gl_panel.createSequentialGroup()
-							.addGap(5)
-							.addComponent(lbl_Name))
-						.addGroup(gl_panel.createSequentialGroup()
-							.addGap(2)
-							.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE)))
-					.addGap(13)
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel.createSequentialGroup()
-							.addGap(3)
-							.addComponent(lbl_Address))
-						.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE))
-					.addGap(11)
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel.createSequentialGroup()
-							.addGap(5)
-							.addComponent(lbl_Phone))
-						.addGroup(gl_panel.createSequentialGroup()
-							.addGap(5)
-							.addComponent(lbl_Mobile))
-						.addComponent(textField_5, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE)
-						.addGroup(gl_panel.createSequentialGroup()
-							.addGap(2)
-							.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE)))
-					.addGap(11)
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel.createSequentialGroup()
-							.addGap(5)
-							.addComponent(lbl_Email))
-						.addComponent(textField_6, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE))
-					.addGap(11)
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel.createSequentialGroup()
-							.addGap(5)
-							.addComponent(lbl_Note))
-						.addComponent(textPane, GroupLayout.PREFERRED_SIZE, 74, GroupLayout.PREFERRED_SIZE)))
-		);
-		panel.setLayout(gl_panel);
+		
+		JLabel label = new JLabel("Cr\u00E9e le");
+		label.setHorizontalAlignment(SwingConstants.RIGHT);
+		
+		textField_7 = new JTextField();
+		textField_7.setColumns(10);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		GroupLayout gl_panel_Champs = new GroupLayout(panel_Champs);
 		gl_panel_Champs.setHorizontalGroup(
 			gl_panel_Champs.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_Champs.createSequentialGroup()
-					.addGroup(gl_panel_Champs.createParallelGroup(Alignment.TRAILING)
-						.addGroup(Alignment.LEADING, gl_panel_Champs.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE))
-						.addGroup(Alignment.LEADING, gl_panel_Champs.createSequentialGroup()
+					.addGroup(gl_panel_Champs.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel_Champs.createSequentialGroup()
 							.addGap(10)
-							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 480, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(panel, GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE))
+						.addGroup(gl_panel_Champs.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)))
 					.addContainerGap())
 		);
 		gl_panel_Champs.setVerticalGroup(
@@ -370,23 +279,144 @@ public class PClients extends JPanel {
 					.addGap(10)
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 240, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE))
+					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+					.addContainerGap())
 		);
 		
 		table = new JTable();
 		scrollPane.setViewportView(table);
+		GroupLayout gl_panel = new GroupLayout(panel);
+		gl_panel.setHorizontalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(34)
+					.addComponent(lbl_Code, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+					.addComponent(textField, GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
+					.addGap(23)
+					.addComponent(label, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+					.addGap(4)
+					.addComponent(textField_7, GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
+					.addGap(10)
+					.addComponent(checkbox, GroupLayout.PREFERRED_SIZE, 94, GroupLayout.PREFERRED_SIZE))
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(20)
+					.addComponent(lbl_Firstname, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
+					.addComponent(textField_1, GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
+					.addGap(12)
+					.addComponent(lbl_Name, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
+					.addGap(4)
+					.addComponent(textField_2, GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
+					.addGap(10))
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(20)
+					.addComponent(lbl_Address, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
+					.addComponent(textField_4, GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
+					.addGap(10))
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(6)
+					.addComponent(lbl_Phone, GroupLayout.PREFERRED_SIZE, 56, GroupLayout.PREFERRED_SIZE)
+					.addGap(3)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addComponent(textField_5, GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+							.addGap(42))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(122)
+							.addComponent(lbl_Mobile, GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)))
+					.addGap(3)
+					.addComponent(textField_3, GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
+					.addGap(10))
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(10)
+					.addComponent(lbl_Email, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)
+					.addGap(1)
+					.addComponent(textField_6, GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
+					.addGap(10))
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(8)
+					.addComponent(lbl_Note)
+					.addGap(3)
+					.addComponent(textPane, GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
+					.addGap(10))
+		);
+		gl_panel.setVerticalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(6)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(3)
+							.addComponent(lbl_Code))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(1)
+							.addComponent(textField, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(4)
+							.addComponent(label, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(1)
+							.addComponent(textField_7, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE))
+						.addComponent(checkbox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(7)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(2)
+							.addComponent(lbl_Firstname))
+						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(5)
+							.addComponent(lbl_Name, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(2)
+							.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE)))
+					.addGap(6)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(2)
+							.addComponent(lbl_Address))
+						.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE))
+					.addGap(13)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(3)
+							.addComponent(lbl_Phone, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(1)
+							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+								.addComponent(textField_5, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE)
+								.addGroup(gl_panel.createSequentialGroup()
+									.addGap(2)
+									.addComponent(lbl_Mobile))))
+						.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE))
+					.addGap(11)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addComponent(lbl_Email, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE)
+						.addComponent(textField_6, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE))
+					.addGap(13)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addComponent(lbl_Note, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(1)
+							.addComponent(textPane, GroupLayout.PREFERRED_SIZE, 74, GroupLayout.PREFERRED_SIZE))))
+		);
+		panel.setLayout(gl_panel);
 		panel_Champs.setLayout(gl_panel_Champs);
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addComponent(panel_Menu, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addComponent(panel_Champs, GroupLayout.PREFERRED_SIZE, 500, GroupLayout.PREFERRED_SIZE))
+					.addGap(10)
+					.addComponent(panel_Champs, GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE)
+					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addComponent(panel_Menu, GroupLayout.PREFERRED_SIZE, 550, GroupLayout.PREFERRED_SIZE)
-				.addComponent(panel_Champs, GroupLayout.PREFERRED_SIZE, 550, GroupLayout.PREFERRED_SIZE)
+				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+						.addComponent(panel_Champs, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
+						.addComponent(panel_Menu, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+					.addGap(0))
 		);
 		setLayout(groupLayout);
 
