@@ -10,6 +10,5 @@ public interface UserDAO {
 	public void removeUser(int userID);
 	public User getUser(int userID);
 	public boolean getUserConnection(String user, String passwd);
-	public UserDAO login(String login, String password);
 	public List<User> getAllUser();
 }

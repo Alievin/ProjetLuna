@@ -45,24 +45,68 @@ public class UserDAOMysql implements UserDAO {
 
 	@Override
 	public User getUser(int userID) {
-		return null;
+		User user=null;
+		try {
+			
+			state = conn.createStatement();
+			result = state.executeQuery("SELECT "+userID+" FROM User");
+
+			while (result.next()) {
+				user=new User();
+				user.setId(result.getInt("id"));
+				user.setLogin(result.getString("login"));
+				user.setPass(result.getString("pass"));
+				user.setRole(result.getInt("role"));
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return user;
 	}
 
 	@Override
 	public void insertUser(User user) {
+		try 
+		{
+			state=conn.createStatement();
+			state.executeUpdate("INSERT INTO user(login, pass, role) "
+					+ "VALUES ('"+user.getLogin()+"','"+user.getPass()+"','"+user.getRole()+"')");
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
 	}
-
-
-	public UserDAO login(String login, String password) {
-		return null;
-	}
+	
 
 	@Override
 	public void removeUser(int userID) {
+		try 
+		{
+			state=conn.createStatement();
+			state.executeUpdate("DELETE FROM user WHERE id='"+userID+"'");
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public void updateUser(User user) {
+		try 
+		{
+			state=conn.createStatement();
+			state.executeUpdate("UPDATE user SET login='"+user.getLogin()+
+					"',pass='"+user.getPass()+
+					"',role='"+user.getRole()+
+					"' WHERE id='"+user.getId()+"'");
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
 	}
 	
 	@Override

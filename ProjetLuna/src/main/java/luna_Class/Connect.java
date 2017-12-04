@@ -14,7 +14,7 @@ public class Connect {
 			Class.forName("com.mysql.jdbc.Driver");
 			System.out.println("DRIVER OK !");
 
-			String url = "jdbc:mysql://localhost:3306/testluna";
+			String url = "jdbc:mysql://localhost:3306/luna";
 			String user = "root";
 			String passwd = "";
 
