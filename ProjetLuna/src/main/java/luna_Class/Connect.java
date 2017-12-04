@@ -32,7 +32,7 @@ public class Connect {
 			while (result.next()) {
 				System.out.print("\t" + result.getInt("id") + "\t |");
 				System.out.print("\t" + result.getDate("dateCreation") + "\t |");
-				System.out.print("\t" + result.getInt("cartedefidelité") + "\t |");
+				System.out.print("\t" + result.getInt("cartedefidelite") + "\t |");
 				System.out.println("\t" + result.getString("prenom") + "\t |");
 
 			}

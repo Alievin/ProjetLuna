@@ -30,10 +30,10 @@ public class ArticleDAOMysql implements ArticleDAO {
 			while (result.next()) {
 				article=new Article();
 				article.setId(result.getInt("id"));
-				article.setCodeCatégorie(result.getInt("codeCatégorie"));
-				article.setCatégorie(result.getString("Catégorie"));
+				article.setCodeCategorie(result.getInt("codeCategorie"));
+				article.setCategorie(result.getString("Categorie"));
 				article.setDesignation(result.getString("designation"));
-				article.setQuantitéstock(result.getInt("quantitestock"));
+				article.setQuantitestock(result.getInt("quantitestock"));
 				article.setPrixUnitaire(result.getInt("prixUnitaire"));
 				articles.add(article);
 			}

@@ -8,10 +8,10 @@ public class Client {
 	}
 
 	////////
-	// - - DÉCLARATION DES ATTRIBUTS DE LA CLASSE "client" - - //
+	// - - DeCLARATION DES ATTRIBUTS DE LA CLASSE "client" - - //
 	private int id;
 	private Date dateCreation;
-	private int cartedefidelité;
+	private int cartedefidelite;
 	private String prenom;
 	private String nom;
 	private String adresse;
@@ -22,12 +22,12 @@ public class Client {
 	private String remarques;
 
 	// CONSTRUCTEUR
-	public Client(int id, Date dateCreation, int cartedefidelité, String prenom, String nom, String adresse, int codePostal, int fixe,
+	public Client(int id, Date dateCreation, int cartedefidelite, String prenom, String nom, String adresse, int codePostal, int fixe,
 			int mobile, String email, String remarques) {
 		super();
 		this.id = id;
 		this.dateCreation = dateCreation;
-		this.cartedefidelité = cartedefidelité;
+		this.cartedefidelite = cartedefidelite;
 		this.prenom = prenom;
 		this.nom = nom;
 		this.adresse = adresse;
@@ -56,13 +56,13 @@ public class Client {
 		this.dateCreation = dateCreation;
 	}
 
-	// - - GETTER & SETTER DE L'ATTRIBUT "cartedefidelité" - - //
-	public int getCartedefidelité() {
-		return cartedefidelité;
+	// - - GETTER & SETTER DE L'ATTRIBUT "cartedefidelite" - - //
+	public int getCartedefidelite() {
+		return cartedefidelite;
 	}
 
-	public void setCartedefidelité(int cartedefidelité) {
-		this.cartedefidelité = cartedefidelité;
+	public void setCartedefidelite(int cartedefidelite) {
+		this.cartedefidelite = cartedefidelite;
 	}
 
 	// - - GETTER & SETTER DE L'ATTRIBUT "prenom" - - //

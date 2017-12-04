@@ -33,7 +33,7 @@ public class CommandcreerDAOMysql implements CommandcreerDAO {
 				commandcreer.setId(result.getInt("id"));
 				commandcreer.setIdcommand(result.getInt("idcommande"));
 				commandcreer.setIdArticle(result.getInt("idArticle"));
-				commandcreer.setQuantité(result.getInt("quantité"));
+				commandcreer.setQuantite(result.getInt("quantite"));
 				commandcreers.add(commandcreer);
 			}
 

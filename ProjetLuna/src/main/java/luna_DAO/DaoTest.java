@@ -21,7 +21,7 @@ public class DaoTest {
 		for (Client client : clients) {
 			System.out.print("\t" + client.getId() + "\t |");
 			System.out.print("\t" + client.getDateCreation() + "\t |");
-			System.out.print("\t" + client.getCartedefidelité() + "\t |");
+			System.out.print("\t" + client.getCartedefidelite() + "\t |");
 			System.out.print("\t" + client.getNom() + "\t |");
 			System.out.print("\t" + client.getPrenom() + "\t |");
 			System.out.print("\t" + client.getAdresse() + "\t |");
@@ -39,10 +39,10 @@ public class DaoTest {
 		System.out.println("\n------------------------------------------------------------------------------------------------------------------");
 		for (Article article : articles) {
 			System.out.print("\t" + article.getId() + "\t |");
-			System.out.print("\t" + article.getCodeCatégorie() + "\t |");
-			System.out.print("\t" + article.getCatégorie() + "\t |");
+			System.out.print("\t" + article.getCodeCategorie() + "\t |");
+			System.out.print("\t" + article.getCategorie() + "\t |");
 			System.out.print("\t" + article.getDesignation() + "\t |");
-			System.out.print("\t" + article.getQuantitéstock() + "\t |");
+			System.out.print("\t" + article.getQuantitestock() + "\t |");
 			System.out.print("\t" + article.getPrixUnitaire() + "\t |");
 			System.out.println("\n------------------------------------------------------------------------------------------------------------------");
 		}
@@ -67,7 +67,7 @@ public class DaoTest {
 				System.out.print("\t" + commandcreer.getId() + "\t |");
 				System.out.print("\t" + commandcreer.getIdcommand() + "\t |");
 				System.out.print("\t" + commandcreer.getIdArticle() + "\t |");
-				System.out.print("\t" + commandcreer.getQuantité() + "\t |");
+				System.out.print("\t" + commandcreer.getQuantite() + "\t |");
 				System.out.println("\n------------------------------------------------------------------------------------------------------------------");		
 		}
 			System.out.println();

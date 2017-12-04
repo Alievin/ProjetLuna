@@ -2,19 +2,19 @@ package luna_Class;
 
 public class Commandcreer {
 	//
-	// - - DÉCLARATION DES ATTRIBUTS DE LA CLASSE "commandcreer" - - //
+	// - - DeCLARATION DES ATTRIBUTS DE LA CLASSE "commandcreer" - - //
 	private int id;
 	private int idcommand;
 	private int idArticle;
-	private int quantité;
+	private int quantite;
 
 	// CONSTRUCTEUR
-	public Commandcreer(int id, int idcommand, int idArticle, int quantité) {
+	public Commandcreer(int id, int idcommand, int idArticle, int quantite) {
 		super();
 		this.id = id;
 		this.idcommand = idcommand;
 		this.idArticle = idArticle;
-		this.quantité = quantité;
+		this.quantite = quantite;
 	}
 
 	public Commandcreer() {
@@ -48,13 +48,13 @@ public class Commandcreer {
 		this.idArticle = idArticle;
 	}
 
-	// - - GETTER & SETTER DE L'ATTRIBUT "quantité" - - //
-	public int getQuantité() {
-		return quantité;
+	// - - GETTER & SETTER DE L'ATTRIBUT "quantite" - - //
+	public int getQuantite() {
+		return quantite;
 	}
 
-	public void setQuantité(int quantité) {
-		this.quantité = quantité;
+	public void setQuantite(int quantite) {
+		this.quantite = quantite;
 	}
 
 }

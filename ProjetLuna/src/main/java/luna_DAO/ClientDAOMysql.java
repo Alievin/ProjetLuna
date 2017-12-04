@@ -32,7 +32,7 @@ public class ClientDAOMysql implements ClientDAO {
 				client=new Client();
 				client.setId(result.getInt("id"));
 				client.setDateCreation(result.getDate("dateCreation"));
-				client.setCartedefidelité(result.getInt("cartedefidelité"));
+				client.setCartedefidelite(result.getInt("cartedefidelite"));
 				client.setNom(result.getString("nom"));
 				client.setPrenom(result.getString("prenom"));
 				client.setAdresse(result.getString("adresse"));

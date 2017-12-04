@@ -6,23 +6,23 @@ public class Article {
 	}
 
 	//
-	// - - DÉCLARATION DES ATTRIBUTS DE LA CLASSE "article" - - //
+	// - - DeCLARATION DES ATTRIBUTS DE LA CLASSE "article" - - //
 	private int id;
-	private int codeCatégorie;
-	private String Catégorie;
+	private int codeCategorie;
+	private String Categorie;
 	private String designation;
-	private int quantitéstock;
+	private int quantitestock;
 	private int prixUnitaire;
 
 	// CONSTRUCTEUR
-	public Article(int id, int codeCatégorie, String catégorie, String designation, int quantitéstock,
+	public Article(int id, int codeCategorie, String categorie, String designation, int quantitestock,
 			int prixUnitaire) {
 		super();
 		this.id = id;
-		this.codeCatégorie = codeCatégorie;
-		this.Catégorie = catégorie;
+		this.codeCategorie = codeCategorie;
+		this.Categorie = categorie;
 		this.designation = designation;
-		this.quantitéstock = quantitéstock;
+		this.quantitestock = quantitestock;
 		this.prixUnitaire = prixUnitaire;
 	}
 
@@ -35,22 +35,22 @@ public class Article {
 		this.id = id;
 	}
 
-	// - - GETTER & SETTER DE L'ATTRIBUT "codeCatégorie" - - //
-	public int getCodeCatégorie() {
-		return codeCatégorie;
+	// - - GETTER & SETTER DE L'ATTRIBUT "codeCategorie" - - //
+	public int getCodeCategorie() {
+		return codeCategorie;
 	}
 
-	public void setCodeCatégorie(int codeCatégorie) {
-		this.codeCatégorie = codeCatégorie;
+	public void setCodeCategorie(int codeCategorie) {
+		this.codeCategorie = codeCategorie;
 	}
 
-	// - - GETTER & SETTER DE L'ATTRIBUT "Catégorie" - - //
-	public String getCatégorie() {
-		return Catégorie;
+	// - - GETTER & SETTER DE L'ATTRIBUT "Categorie" - - //
+	public String getCategorie() {
+		return Categorie;
 	}
 
-	public void setCatégorie(String catégorie) {
-		Catégorie = catégorie;
+	public void setCategorie(String categorie) {
+		Categorie = categorie;
 	}
 
 	// - - GETTER & SETTER DE L'ATTRIBUT "designation" - - //
@@ -62,13 +62,13 @@ public class Article {
 		this.designation = designation;
 	}
 
-	// - - GETTER & SETTER DE L'ATTRIBUT "quantitéstock" - - //
-	public int getQuantitéstock() {
-		return quantitéstock;
+	// - - GETTER & SETTER DE L'ATTRIBUT "quantitestock" - - //
+	public int getQuantitestock() {
+		return quantitestock;
 	}
 
-	public void setQuantitéstock(int quantitéstock) {
-		this.quantitéstock = quantitéstock;
+	public void setQuantitestock(int quantitestock) {
+		this.quantitestock = quantitestock;
 	}
 
 	// - - GETTER & SETTER DE L'ATTRIBUT "prixUnitaire" - - //
