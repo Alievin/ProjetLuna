@@ -7,18 +7,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Toolkit;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import java.awt.Color;
 import javax.swing.border.MatteBorder;
-
-import com.global.singleton.GlobalConnection;
-import com.sun.org.apache.xalan.internal.utils.FeatureManager;
-
-import jdk.nashorn.internal.objects.Global;
-import jdk.nashorn.internal.runtime.GlobalConstants;
-import luna_DAO.UserDAO;
-import luna_DAO.UserDAOMysql;
-
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
@@ -30,9 +20,6 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.Dimension;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.sql.SQLException;
 
 public class Connexion extends JFrame {
 
@@ -135,26 +122,6 @@ public class Connexion extends JFrame {
 		panel_Login.setLayout(gl_panel_Login);
 		
 		JButton btn_Validate = new JButton("Valider");
-		btn_Validate.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				UserDAOMysql user=new UserDAOMysql(GlobalConnection.getInstance());
-				String passwd="";
-				for(char unchar : passwordField_Password.getPassword())
-				{
-					passwd+=unchar;
-				}
-				if(user.getUserConnection(textField_Username.getText(), passwd))
-				{
-					Accueil fAccueil=new Accueil();
-					fAccueil.setVisible(true);
-					fermeture();
-				}
-				else 
-				{			
-					erreurConnexion();
-				}				
-			}
-		});
 		btn_Validate.setFocusPainted(false);
 		btn_Validate.setBorder(new EmptyBorder(0, 0, 0, 0));
 		btn_Validate.setHorizontalTextPosition(SwingConstants.LEFT);
@@ -178,11 +145,6 @@ public class Connexion extends JFrame {
 		btn_Settings.setIcon(new ImageIcon(Connexion.class.getResource("/images/connection/Customize-01-48.png")));
 		
 		JButton btn_Exit = new JButton("Quitter");
-		btn_Exit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				fermeture();
-			}
-		});
 		btn_Exit.setFocusPainted(false);
 		btn_Exit.setPressedIcon(new ImageIcon(Connexion.class.getResource("/images/connection/Stop-48-actif.png")));
 		btn_Exit.setIcon(new ImageIcon(Connexion.class.getResource("/images/connection/Stop-48.png")));
@@ -228,13 +190,6 @@ public class Connexion extends JFrame {
 							.addComponent(btn_Validate, GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
 							.addContainerGap())))
 		);
-		contentPane.setLayout(gl_contentPane);		
-		
-	}
-	public void fermeture(){
-		super.dispose();
-	}
-	public  void erreurConnexion(){
-		JOptionPane.showMessageDialog(this,"Erreur de connexion");
+		contentPane.setLayout(gl_contentPane);
 	}
 }

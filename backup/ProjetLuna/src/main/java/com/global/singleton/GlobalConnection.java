@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class GlobalConnection {
-	private String url="jdbc:mysql://localhost:3306/luna";
+	private String url="jdbc:mysql://localhost:3306/testluna";
 	private String user="root";
 	private String passwd="";
 

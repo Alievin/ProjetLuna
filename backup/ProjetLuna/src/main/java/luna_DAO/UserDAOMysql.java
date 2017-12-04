@@ -43,7 +43,6 @@ public class UserDAOMysql implements UserDAO {
 		return users;
 	}
 
-	@Override
 	public User getUser(int userID) {
 		return null;
 	}
@@ -63,29 +62,6 @@ public class UserDAOMysql implements UserDAO {
 
 	@Override
 	public void updateUser(User user) {
-	}
-	
-	@Override
-	public   boolean getUserConnection(String user, String passwd){
-		
-		try 
-		{
-			state=conn.createStatement();
-			ResultSet resultat= state.executeQuery("select login,role from user where login='"+user+"' and pass='"+passwd+"'");
-			if(resultat.next()!=false)
-			{
-				return true;
-			}
-			else
-			{
-				return false;
-			}
-		} 
-		catch (SQLException e) 
-		{
-			e.printStackTrace();
-		}
-		return false;
 	}
 
 }

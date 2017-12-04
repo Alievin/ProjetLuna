@@ -23,7 +23,6 @@ import java.awt.event.ActionEvent;
 import javax.swing.UIManager;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.Dimension;
 
 public class Accueil extends JFrame {
