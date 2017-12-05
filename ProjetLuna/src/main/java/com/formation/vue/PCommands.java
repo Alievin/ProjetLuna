@@ -29,6 +29,9 @@ import javax.swing.DebugGraphics;
 import java.awt.Cursor;
 import javax.swing.JTabbedPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JList;
+import javax.swing.SpinnerListModel;
+import javax.swing.DefaultComboBoxModel;
 
 public class PCommands extends JPanel {
 	private JTextField textField;
@@ -38,6 +41,7 @@ public class PCommands extends JPanel {
 	private JTextField textField_4;
 	private JTextField textField_5;
 	private JTable table;
+	private JTextField textField_6;
 
 	/**
 	 * Create the panel.
@@ -189,9 +193,9 @@ public class PCommands extends JPanel {
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 241, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(panel_3, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 443, Short.MAX_VALUE)
-						.addComponent(panel_1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 443, Short.MAX_VALUE)
-						.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 443, Short.MAX_VALUE))
+						.addComponent(panel_1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 543, Short.MAX_VALUE)
+						.addComponent(panel_3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
@@ -208,6 +212,63 @@ public class PCommands extends JPanel {
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 549, Short.MAX_VALUE)
 					.addGap(1))
 		);
+		
+		JButton btnValiderLaCommande = new JButton("Valider la commande");
+		btnValiderLaCommande.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnValiderLaCommande.setContentAreaFilled(false);
+		btnValiderLaCommande.setFocusPainted(false);
+		btnValiderLaCommande.setIcon(new ImageIcon(PCommands.class.getResource("/images/gestion/commande/Shopping-Cart-05-48.png")));
+		
+		JLabel lblModeDePaiement = new JLabel("Mode de r\u00E8glement  :");
+		lblModeDePaiement.setIcon(new ImageIcon(PCommands.class.getResource("/images/gestion/commande/ATM-32.png")));
+		lblModeDePaiement.setFont(new Font("Tahoma", Font.BOLD, 11));
+		
+		JList list = new JList();
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Carte Bleue"}));
+		
+		textField_6 = new JTextField();
+		textField_6.setDisabledTextColor(Color.GRAY);
+		textField_6.setEditable(false);
+		textField_6.setFont(new Font("Tahoma", Font.BOLD, 15));
+		textField_6.setText("0,00\u20AC");
+		textField_6.setColumns(10);
+		GroupLayout gl_panel_3 = new GroupLayout(panel_3);
+		gl_panel_3.setHorizontalGroup(
+			gl_panel_3.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_3.createSequentialGroup()
+					.addContainerGap(292, Short.MAX_VALUE)
+					.addComponent(btnValiderLaCommande, GroupLayout.PREFERRED_SIZE, 222, GroupLayout.PREFERRED_SIZE)
+					.addGap(29))
+				.addGroup(gl_panel_3.createSequentialGroup()
+					.addGap(60)
+					.addComponent(lblModeDePaiement, GroupLayout.PREFERRED_SIZE, 163, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(64)
+					.addComponent(list, GroupLayout.PREFERRED_SIZE, 1, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(textField_6, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(54, Short.MAX_VALUE))
+		);
+		gl_panel_3.setVerticalGroup(
+			gl_panel_3.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_3.createSequentialGroup()
+					.addContainerGap(27, Short.MAX_VALUE)
+					.addGroup(gl_panel_3.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblModeDePaiement, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+						.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(textField_6, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(btnValiderLaCommande, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap())
+				.addGroup(gl_panel_3.createSequentialGroup()
+					.addGap(55)
+					.addComponent(list, GroupLayout.PREFERRED_SIZE, 1, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(83, Short.MAX_VALUE))
+		);
+		panel_3.setLayout(gl_panel_3);
 		
 		JButton btnNewButton_4 = new JButton("S\u00E9lectionner un article");
 		btnNewButton_4.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
@@ -252,12 +313,10 @@ public class PCommands extends JPanel {
 		
 		JButton btnAjouter = new JButton("Ajouter");
 		btnAjouter.setContentAreaFilled(false);
-		btnAjouter.setFocusPainted(false);
 		btnAjouter.setIcon(new ImageIcon(PCommands.class.getResource("/images/gestion/Add-New-48.png")));
 		
 		JButton btnModifier = new JButton("Modifier");
 		btnModifier.setContentAreaFilled(false);
-		btnModifier.setFocusPainted(false);
 		btnModifier.setIcon(new ImageIcon(PCommands.class.getResource("/images/gestion/Data-Edit-48.png")));
 		
 		JButton btnSupprimer = new JButton("Supprimer");
@@ -276,14 +335,14 @@ public class PCommands extends JPanel {
 								.addGroup(gl_panel_2.createSequentialGroup()
 									.addComponent(btnNewButton_4, GroupLayout.PREFERRED_SIZE, 181, GroupLayout.PREFERRED_SIZE)
 									.addPreferredGap(ComponentPlacement.UNRELATED)
-									.addComponent(lblCode, GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
+									.addComponent(lblCode, GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
 								.addGroup(gl_panel_2.createSequentialGroup()
 									.addGap(4)
 									.addComponent(lblNewLabel_1)
 									.addPreferredGap(ComponentPlacement.RELATED)
 									.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 									.addGap(18)
-									.addComponent(lblMontant, GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)))
+									.addComponent(lblMontant, GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)))
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
 								.addGroup(gl_panel_2.createSequentialGroup()
@@ -303,9 +362,9 @@ public class PCommands extends JPanel {
 							.addGap(20)
 							.addComponent(btnAjouter)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(btnModifier)
-							.addGap(18)
-							.addComponent(btnSupprimer))
+							.addComponent(btnModifier, GroupLayout.PREFERRED_SIZE, 123, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnSupprimer, GroupLayout.PREFERRED_SIZE, 145, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_panel_2.createSequentialGroup()
 							.addContainerGap()
 							.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 511, Short.MAX_VALUE)))
@@ -332,8 +391,8 @@ public class PCommands extends JPanel {
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnAjouter)
-						.addComponent(btnModifier, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnSupprimer, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE))
+						.addComponent(btnModifier)
+						.addComponent(btnSupprimer))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 92, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
