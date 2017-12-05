@@ -12,11 +12,10 @@ import java.awt.Color;
 import javax.swing.border.MatteBorder;
 
 import com.global.singleton.GlobalConnection;
-import com.sun.org.apache.xalan.internal.utils.FeatureManager;
 
-import jdk.nashorn.internal.objects.Global;
-import jdk.nashorn.internal.runtime.GlobalConstants;
-import luna_DAO.UserDAO;
+
+
+
 import luna_DAO.UserDAOMysql;
 
 import java.awt.Font;
@@ -32,7 +31,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.sql.SQLException;
+
 
 public class Connexion extends JFrame {
 
