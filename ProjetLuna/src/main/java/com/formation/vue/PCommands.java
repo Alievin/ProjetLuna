@@ -438,16 +438,7 @@ public class PCommands extends JPanel {
 					.addGap(12))
 		);
 		
-		table = new JTable();
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-			},
-			new String[] {
-				"Code", "Code Catégorie", "Désignation", "Quantité", "Prix Unitaire", "Total"
-			}
+
 			String col[] = {"Code", "Date Creation", "Carte de fid\u00E9lit\u00E9", "Pr\u00E9nom", "Nom", "Adresse","Code Postal", "Fixe", "mobile", "Email", "Remarques"};
 			DefaultTableModel tableModel = new DefaultTableModel(col, 0);		
 			ClientDAO clientDAO=new ClientDAOMysql(GlobalConnection.getInstance());
@@ -455,7 +446,7 @@ public class PCommands extends JPanel {
 			for (int i = 0; i < clients.size(); i++)
 			{
 				int id=clients.get(i).getId();
-				Date dateCreation=clients.get(i).getDateCreation();
+				String dateCreation=clients.get(i).getDateCreation();
 				int carteFidelite=clients.get(i).getCartedefidelite();
 				String prenom=clients.get(i).getPrenom();
 				String nom=clients.get(i).getNom();
@@ -471,7 +462,7 @@ public class PCommands extends JPanel {
 			table = new JTable(tableModel);
 			table.setEnabled(false);
 			scrollPane.setViewportView(table);
-		));
+		
 		
 		table = new JTable(tableModel);
 		table.setEnabled(false);

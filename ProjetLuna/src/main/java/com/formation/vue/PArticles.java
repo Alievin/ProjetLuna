@@ -22,6 +22,7 @@ import javax.swing.JTable;
 import javax.swing.JToolBar;
 import javax.swing.JRadioButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.awt.event.ActionEvent;
@@ -49,7 +50,8 @@ public class PArticles extends JPanel {
 	 */
 	public PArticles(Accueil parent) {
 		ArticleDAO articleDAO=new ArticleDAOMysql(GlobalConnection.getInstance());
-		List<Article> articles = articleDAO.getAllArticle();
+		List<Article> articles = new ArrayList<>();				
+		articles=articleDAO.getAllArticle();
 		
 		setBackground(new Color(250, 250, 210));
 		
