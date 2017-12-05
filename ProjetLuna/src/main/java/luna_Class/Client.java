@@ -1,6 +1,5 @@
 package luna_Class;
 
-import java.util.Date;
 
 public class Client {
 	public Client() {
@@ -10,7 +9,7 @@ public class Client {
 	////////
 	// - - DeCLARATION DES ATTRIBUTS DE LA CLASSE "client" - - //
 	private int id;
-	private Date dateCreation;
+	private String dateCreation;
 	private int cartedefidelite;
 	private String prenom;
 	private String nom;
@@ -22,10 +21,9 @@ public class Client {
 	private String remarques;
 
 	// CONSTRUCTEUR
-	public Client(int id, Date dateCreation, int cartedefidelite, String prenom, String nom, String adresse, int codePostal, int fixe,
+	public Client(String dateCreation, int cartedefidelite, String prenom, String nom, String adresse, int codePostal, int fixe,
 			int mobile, String email, String remarques) {
 		super();
-		this.id = id;
 		this.dateCreation = dateCreation;
 		this.cartedefidelite = cartedefidelite;
 		this.prenom = prenom;
@@ -48,11 +46,11 @@ public class Client {
 	}
 
 	// - - GETTER & SETTER DE L'ATTRIBUT "dateCreation" - - //
-	public Date getDateCreation() {
+	public String getDateCreation() {
 		return dateCreation;
 	}
 
-	public void setDateCreation(Date dateCreation) {
+	public void setDateCreation(String dateCreation) {
 		this.dateCreation = dateCreation;
 	}
 

@@ -31,7 +31,7 @@ public class ClientDAOMysql implements ClientDAO {
 			while (result.next()) {
 				client=new Client();
 				client.setId(result.getInt("id"));
-				client.setDateCreation(result.getDate("dateCreation"));
+				client.setDateCreation(result.getString("dateCreation"));
 				client.setCartedefidelite(result.getInt("cartedefidelite"));
 				client.setNom(result.getString("nom"));
 				client.setPrenom(result.getString("prenom"));
@@ -61,7 +61,7 @@ public class ClientDAOMysql implements ClientDAO {
 			while (result.next()) {
 				client=new Client();
 				client.setId(result.getInt("id"));
-				client.setDateCreation(result.getDate("dateCreation"));
+				client.setDateCreation(result.getString("dateCreation"));
 				client.setCartedefidelite(result.getInt("cartedefidelite"));
 				client.setNom(result.getString("nom"));
 				client.setPrenom(result.getString("prenom"));

@@ -52,9 +52,9 @@ public class Accueil extends JFrame {
 		
 	}
 
-	public void afficherFenetre(int numPanel)
+	public void afficherFenetre(int... args)
 	{
-		switch (numPanel) {
+		switch (args[0]) {
 		case 0:
 			PAccueil pAccueil=new PAccueil(this);
 			setContentPane(pAccueil);
@@ -72,11 +72,13 @@ public class Accueil extends JFrame {
 			setContentPane(pCommands);
 			break;
 		case 4:
-			PAjoutModif pAjoutModif=new PAjoutModif(this);
-			setContentPane(pAjoutModif);
+			PAjoutModif pAjout=new PAjoutModif(this);
+			setContentPane(pAjout);
 			break;
 		case 5:
-			//setContentPane();
+			PAjoutModif pModif=new PAjoutModif(this);
+			pModif.doubleClicked(args[1]);
+			setContentPane(pModif);
 			break;
 		}
 		this.revalidate();

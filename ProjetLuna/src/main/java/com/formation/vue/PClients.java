@@ -21,7 +21,6 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JScrollPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTable;
-import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 import com.global.singleton.GlobalConnection;
@@ -30,7 +29,8 @@ import luna_Class.Client;
 import luna_DAO.ClientDAO;
 import luna_DAO.ClientDAOMysql;
 import java.util.Date;
-import java.util.ArrayList;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class PClients extends JPanel {
 	private JTextField textField;
@@ -47,6 +47,8 @@ public class PClients extends JPanel {
 	 * Create the panel.
 	 */
 	public PClients(Accueil parent) {
+		ClientDAO clientDAO=new ClientDAOMysql(GlobalConnection.getInstance());
+		List<Client> clients = clientDAO.getAllClient();
 		setBackground(new Color(230, 230, 250));
 		
 		Panel panel_Menu = new Panel();
@@ -84,7 +86,8 @@ public class PClients extends JPanel {
 		JButton btn_Edit = new JButton("Modifier");
 		btn_Edit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				parent.afficherFenetre(4);
+				int selected=table.getSelectedRow();
+				parent.afficherFenetre(5, selected);				
 			}
 		});
 		btn_Edit.setForeground(Color.WHITE);
@@ -140,20 +143,20 @@ public class PClients extends JPanel {
 		btn_Export.setContentAreaFilled(false);
 		btn_Export.setBorder(new EmptyBorder(0, 0, 0, 0));
 		
-		JButton btnCcueil = new JButton("Accueil");
-		btnCcueil.addActionListener(new ActionListener() {
+		JButton btnAccueil = new JButton("Accueil");
+		btnAccueil.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				parent.afficherFenetre(0);
 			}
 		});
-		btnCcueil.setForeground(Color.WHITE);
-		btnCcueil.setPressedIcon(new ImageIcon(PClients.class.getResource("/images/gestion/Home-48-actif.png")));
-		btnCcueil.setIcon(new ImageIcon(PClients.class.getResource("/images/gestion/Home-48.png")));
-		btnCcueil.setOpaque(false);
-		btnCcueil.setHorizontalAlignment(SwingConstants.LEFT);
-		btnCcueil.setFocusPainted(false);
-		btnCcueil.setContentAreaFilled(false);
-		btnCcueil.setBorder(new EmptyBorder(0, 0, 0, 0));
+		btnAccueil.setForeground(Color.WHITE);
+		btnAccueil.setPressedIcon(new ImageIcon(PClients.class.getResource("/images/gestion/Home-48-actif.png")));
+		btnAccueil.setIcon(new ImageIcon(PClients.class.getResource("/images/gestion/Home-48.png")));
+		btnAccueil.setOpaque(false);
+		btnAccueil.setHorizontalAlignment(SwingConstants.LEFT);
+		btnAccueil.setFocusPainted(false);
+		btnAccueil.setContentAreaFilled(false);
+		btnAccueil.setBorder(new EmptyBorder(0, 0, 0, 0));
 		GroupLayout gl_panel_Menu = new GroupLayout(panel_Menu);
 		gl_panel_Menu.setHorizontalGroup(
 			gl_panel_Menu.createParallelGroup(Alignment.LEADING)
@@ -188,7 +191,7 @@ public class PClients extends JPanel {
 					.addContainerGap())
 				.addGroup(Alignment.TRAILING, gl_panel_Menu.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(btnCcueil, GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+					.addComponent(btnAccueil, GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
 					.addContainerGap())
 		);
 		gl_panel_Menu.setVerticalGroup(
@@ -210,7 +213,7 @@ public class PClients extends JPanel {
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(btn_Export, GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnCcueil)
+					.addComponent(btnAccueil)
 					.addGap(8))
 		);
 		panel_Menu.setLayout(gl_panel_Menu);
@@ -248,35 +251,46 @@ public class PClients extends JPanel {
 		
 		textField = new JTextField();
 		textField.setColumns(10);
+		textField.setText(String.valueOf(clients.get(0).getId()));
 		
 		textField_1 = new JTextField();
 		textField_1.setColumns(10);
+		textField_1.setText(clients.get(0).getPrenom());
+		
 		
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
+		textField_2.setText(clients.get(0).getNom());
+		
 		
 		textField_3 = new JTextField();
 		textField_3.setColumns(10);
+		textField_3.setText(String.valueOf(clients.get(0).getMobile()));
 		
 		textField_4 = new JTextField();
 		textField_4.setColumns(10);
+		textField_4.setText(clients.get(0).getAdresse());
 		
 		textField_5 = new JTextField();
 		textField_5.setColumns(10);
+		textField_5.setText(String.valueOf(clients.get(0).getFixe()));
 		
 		textField_6 = new JTextField();
 		textField_6.setColumns(10);
+		textField_6.setText(clients.get(0).getEmail());
 		
 		JTextPane textPane = new JTextPane();
 		textPane.setCaretColor(Color.LIGHT_GRAY);
 		textPane.setBorder(new LineBorder(Color.LIGHT_GRAY));
 		textPane.setBackground(Color.WHITE);
+		textPane.setText(clients.get(0).getRemarques());
 		
 		JLabel label = new JLabel("Cr\u00E9e le");
 		label.setHorizontalAlignment(SwingConstants.RIGHT);
 		
 		textField_7 = new JTextField();
 		textField_7.setColumns(10);
+		textField_7.setText(String.valueOf(clients.get(0).getDateCreation()));
 		
 		JScrollPane scrollPane = new JScrollPane();
 		GroupLayout gl_panel_Champs = new GroupLayout(panel_Champs);
@@ -303,12 +317,10 @@ public class PClients extends JPanel {
 		);
 		String col[] = {"Code", "Date Creation", "Carte de fid\u00E9lit\u00E9", "Pr\u00E9nom", "Nom", "Adresse","Code Postal", "Fixe", "mobile", "Email", "Remarques"};
 		DefaultTableModel tableModel = new DefaultTableModel(col, 0);		
-		ClientDAO clientDAO=new ClientDAOMysql(GlobalConnection.getInstance());
-		List<Client> clients = clientDAO.getAllClient();
 		for (int i = 0; i < clients.size(); i++)
 		{
 			int id=clients.get(i).getId();
-			Date dateCreation=clients.get(i).getDateCreation();
+			String dateCreation=clients.get(i).getDateCreation();
 			int carteFidelite=clients.get(i).getCartedefidelite();
 			String prenom=clients.get(i).getPrenom();
 			String nom=clients.get(i).getNom();
@@ -322,9 +334,33 @@ public class PClients extends JPanel {
 			tableModel.addRow(data);
 		}
 		table = new JTable(tableModel);
-		table.setEnabled(false);
+		table.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int nbClick=e.getClickCount();
+				int selected=table.getSelectedRow();
+				if(nbClick==1)
+				{
+					textField.setText(String.valueOf(clients.get(selected).getId()));
+					textField_1.setText(clients.get(selected).getPrenom());
+					textField_2.setText(clients.get(selected).getNom());
+					textField_3.setText(String.valueOf(clients.get(selected).getMobile()));
+					textField_4.setText(clients.get(selected).getAdresse());
+					textField_5.setText(String.valueOf(clients.get(selected).getFixe()));
+					textField_6.setText(clients.get(selected).getEmail());
+					textPane.setText(clients.get(selected).getRemarques());
+					textField_7.setText(String.valueOf(clients.get(selected).getDateCreation()));
+				}
+				else
+				{
+					parent.afficherFenetre(5, selected);					
+				}				
+			}
+		});
+		table.setDefaultEditor(Object.class, null);
+		table.setRowSelectionInterval(0, 0);
 		scrollPane.setViewportView(table);
-		
+
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)

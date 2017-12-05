@@ -14,23 +14,32 @@ import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.ImageIcon;
 import javax.swing.border.TitledBorder;
+
+import com.global.singleton.GlobalConnection;
+
+import luna_Class.Client;
+import luna_DAO.ClientDAO;
+import luna_DAO.ClientDAOMysql;
+
 import javax.swing.border.MatteBorder;
 import javax.swing.JCheckBox;
-import javax.swing.JFormattedTextField;
-import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextPane;
 
 public class PAjoutModif extends JPanel {
 	private JTextField textField_Code;
 	private JTextField textField_Name;
 	private JTextField textField_Address;
 	private JTextField textField_Zip;
-	private JTextField textField_Town;
 	private JTextField textField_Firstname;
 	private JTextField textField_Phone;
 	private JTextField textField_Mobile;
 	private JTextField textField_Email;
+	private JTextPane textPane;
+	private JCheckBox chckbx_Fidelitycard;
+	private JTextField textField_Date;
 
 	/**
 	 * Create the panel.
@@ -46,6 +55,22 @@ public class PAjoutModif extends JPanel {
 		label.setFont(new Font("Tahoma", Font.BOLD, 20));
 		
 		JButton btnSauvegarder = new JButton("Sauvegarder");
+		btnSauvegarder.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Client client=new Client(textField_Date.getText(),
+										(chckbx_Fidelitycard.isSelected())? 1 : 0,
+										textField_Firstname.getText(),
+										textField_Name.getText(),
+										textField_Address.getText(),
+										Integer.parseInt(textField_Zip.getText()),
+										Integer.parseInt(textField_Phone.getText()),
+										Integer.parseInt(textField_Mobile.getText()),
+										textField_Email.getText(),
+										textPane.getText());
+				ClientDAO clientDAO=new ClientDAOMysql(GlobalConnection.getInstance());
+				clientDAO.insertClient(client);
+			}
+		});
 		btnSauvegarder.setPressedIcon(new ImageIcon(PAjoutModif.class.getResource("/images/gestion/Save-48-actif.png")));
 		btnSauvegarder.setIcon(new ImageIcon(PAjoutModif.class.getResource("/images/gestion/Save-48.png")));
 		btnSauvegarder.setOpaque(false);
@@ -185,20 +210,19 @@ public class PAjoutModif extends JPanel {
 					.addContainerGap())
 		);
 		
-		JTextArea textArea = new JTextArea();
+		textPane = new JTextPane();
 		GroupLayout gl_panel_Note = new GroupLayout(panel_Note);
 		gl_panel_Note.setHorizontalGroup(
 			gl_panel_Note.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_Note.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(textArea, GroupLayout.DEFAULT_SIZE, 437, Short.MAX_VALUE)
+					.addComponent(textPane, GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
 					.addContainerGap())
 		);
 		gl_panel_Note.setVerticalGroup(
 			gl_panel_Note.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_Note.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(textArea, GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
+					.addComponent(textPane, GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
 					.addContainerGap())
 		);
 		panel_Note.setLayout(gl_panel_Note);
@@ -269,47 +293,36 @@ public class PAjoutModif extends JPanel {
 		textField_Zip = new JTextField();
 		textField_Zip.setColumns(10);
 		
-		textField_Town = new JTextField();
-		textField_Town.setColumns(10);
-		
 		textField_Firstname = new JTextField();
 		textField_Firstname.setColumns(10);
 		
 		JLabel lbl_Name = new JLabel("Nom");
-		
-		JLabel lbl_Town = new JLabel("Ville");
 		GroupLayout gl_panel_Civil_State = new GroupLayout(panel_Civil_State);
 		gl_panel_Civil_State.setHorizontalGroup(
 			gl_panel_Civil_State.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_Civil_State.createSequentialGroup()
 					.addContainerGap()
+					.addGroup(gl_panel_Civil_State.createParallelGroup(Alignment.LEADING, false)
+						.addComponent(lbl_Firstname, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(lbl_Address, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+					.addGap(28)
 					.addGroup(gl_panel_Civil_State.createParallelGroup(Alignment.LEADING)
-						.addComponent(lbl_Zip, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
-						.addGroup(gl_panel_Civil_State.createParallelGroup(Alignment.LEADING, false)
-							.addComponent(lbl_Firstname, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addComponent(lbl_Address, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_panel_Civil_State.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel_Civil_State.createSequentialGroup()
-							.addGroup(gl_panel_Civil_State.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_panel_Civil_State.createSequentialGroup()
-									.addComponent(textField_Zip, GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(lbl_Town, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(textField_Town, GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-									.addGap(0))
-								.addGroup(gl_panel_Civil_State.createSequentialGroup()
-									.addComponent(textField_Firstname, GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-									.addGap(9)
-									.addComponent(lbl_Name, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.UNRELATED)
-									.addComponent(textField_Name, GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-									.addGap(0)))
-							.addGap(10))
-						.addGroup(gl_panel_Civil_State.createSequentialGroup()
-							.addComponent(textField_Address, GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE)
-							.addContainerGap())))
+						.addGroup(gl_panel_Civil_State.createParallelGroup(Alignment.LEADING)
+							.addGroup(gl_panel_Civil_State.createSequentialGroup()
+								.addComponent(textField_Firstname, GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
+								.addGap(9)
+								.addComponent(lbl_Name, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.UNRELATED)
+								.addComponent(textField_Name, GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+								.addGap(10))
+							.addGroup(gl_panel_Civil_State.createSequentialGroup()
+								.addComponent(textField_Address, GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE)
+								.addContainerGap()))
+						.addGroup(Alignment.TRAILING, gl_panel_Civil_State.createSequentialGroup()
+							.addComponent(lbl_Zip, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(textField_Zip, GroupLayout.PREFERRED_SIZE, 155, GroupLayout.PREFERRED_SIZE)
+							.addGap(94))))
 		);
 		gl_panel_Civil_State.setVerticalGroup(
 			gl_panel_Civil_State.createParallelGroup(Alignment.LEADING)
@@ -327,9 +340,7 @@ public class PAjoutModif extends JPanel {
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_panel_Civil_State.createParallelGroup(Alignment.BASELINE)
 						.addComponent(textField_Zip, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
-						.addComponent(textField_Town, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lbl_Zip)
-						.addComponent(lbl_Town))
+						.addComponent(lbl_Zip))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		panel_Civil_State.setLayout(gl_panel_Civil_State);
@@ -341,10 +352,11 @@ public class PAjoutModif extends JPanel {
 		
 		JLabel lbl_Create = new JLabel("Cr\u00E9e le");
 		
-		JCheckBox chckbx_Fidelitycard = new JCheckBox("Carte de fid\u00E9lit\u00E9");
+		chckbx_Fidelitycard = new JCheckBox("Carte de fid\u00E9lit\u00E9");
 		chckbx_Fidelitycard.setOpaque(false);
 		
-		JFormattedTextField formattedTextField_Create = new JFormattedTextField();
+		textField_Date = new JTextField();
+		textField_Date.setColumns(10);
 		GroupLayout gl_panel_Client = new GroupLayout(panel_Client);
 		gl_panel_Client.setHorizontalGroup(
 			gl_panel_Client.createParallelGroup(Alignment.LEADING)
@@ -355,9 +367,9 @@ public class PAjoutModif extends JPanel {
 					.addComponent(textField_Code, GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
 					.addGap(18)
 					.addComponent(lbl_Create)
-					.addGap(10)
-					.addComponent(formattedTextField_Create, GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
-					.addGap(7)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(textField_Date, GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+					.addGap(5)
 					.addComponent(chckbx_Fidelitycard))
 		);
 		gl_panel_Client.setVerticalGroup(
@@ -371,10 +383,9 @@ public class PAjoutModif extends JPanel {
 				.addGroup(gl_panel_Client.createSequentialGroup()
 					.addGap(4)
 					.addComponent(lbl_Create))
-				.addGroup(gl_panel_Client.createSequentialGroup()
-					.addGap(1)
-					.addComponent(formattedTextField_Create, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-				.addComponent(chckbx_Fidelitycard)
+				.addGroup(gl_panel_Client.createParallelGroup(Alignment.BASELINE)
+					.addComponent(chckbx_Fidelitycard)
+					.addComponent(textField_Date, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 		);
 		panel_Client.setLayout(gl_panel_Client);
 		panel_Menu.setLayout(gl_panel_Menu);
@@ -396,5 +407,20 @@ public class PAjoutModif extends JPanel {
 		);
 		setLayout(groupLayout);
 
+	}
+	public void doubleClicked(int numClients)
+	{
+		ClientDAO clientDAO=new ClientDAOMysql(GlobalConnection.getInstance());
+		List<Client> clients = clientDAO.getAllClient();
+		textField_Code.setText(String.valueOf(clients.get(numClients).getId()));
+		textField_Firstname.setText(clients.get(numClients).getPrenom());
+		textField_Name.setText(clients.get(numClients).getNom());
+		textField_Mobile.setText(String.valueOf(clients.get(numClients).getMobile()));
+		textField_Address.setText(clients.get(numClients).getAdresse());
+		textField_Phone.setText(String.valueOf(clients.get(numClients).getFixe()));
+		textField_Email.setText(clients.get(numClients).getEmail());
+		textPane.setText(clients.get(numClients).getRemarques());
+		textField_Date.setText(String.valueOf(clients.get(numClients).getDateCreation()));
+		textField_Zip.setText(String.valueOf(clients.get(numClients).getCodePostal()));
 	}
 }
