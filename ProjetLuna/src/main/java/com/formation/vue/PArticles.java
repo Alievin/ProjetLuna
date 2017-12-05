@@ -22,7 +22,19 @@ import javax.swing.JTable;
 import javax.swing.JToolBar;
 import javax.swing.JRadioButton;
 import java.awt.event.ActionListener;
+import java.util.Date;
+import java.util.List;
 import java.awt.event.ActionEvent;
+import javax.swing.table.DefaultTableModel;
+
+import com.global.singleton.GlobalConnection;
+
+import luna_Class.Article;
+import luna_Class.Client;
+import luna_DAO.ArticleDAO;
+import luna_DAO.ArticleDAOMysql;
+import luna_DAO.ClientDAO;
+import luna_DAO.ClientDAOMysql;
 
 public class PArticles extends JPanel {
 	private JTextField textField_Code;
@@ -36,6 +48,9 @@ public class PArticles extends JPanel {
 	 * Create the panel.
 	 */
 	public PArticles(Accueil parent) {
+		ArticleDAO articleDAO=new ArticleDAOMysql(GlobalConnection.getInstance());
+		List<Article> articles = articleDAO.getAllArticle();
+		
 		setBackground(new Color(250, 250, 210));
 		
 		Panel panel_Menu = new Panel();
@@ -94,7 +109,6 @@ public class PArticles extends JPanel {
 			gl_panel_Menu.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_Menu.createSequentialGroup()
 					.addGroup(gl_panel_Menu.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblArticles, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
 						.addGroup(gl_panel_Menu.createSequentialGroup()
 							.addContainerGap()
 							.addComponent(button_6, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE))
@@ -106,19 +120,20 @@ public class PArticles extends JPanel {
 							.addComponent(button_4, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_panel_Menu.createSequentialGroup()
 							.addContainerGap()
-							.addComponent(btnQuitter, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+							.addComponent(btnQuitter, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE))
+						.addComponent(lblArticles, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(24, Short.MAX_VALUE))
 		);
 		gl_panel_Menu.setVerticalGroup(
 			gl_panel_Menu.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_Menu.createSequentialGroup()
-					.addComponent(lblArticles, GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
+					.addComponent(lblArticles, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addGap(138)
-					.addComponent(button_6, GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+					.addComponent(button_6, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addGap(23)
-					.addComponent(button_5, GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+					.addComponent(button_5, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addGap(18)
-					.addComponent(button_4, GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+					.addComponent(button_4, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addGap(94)
 					.addComponent(btnQuitter, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
 					.addGap(21))
@@ -131,17 +146,17 @@ public class PArticles extends JPanel {
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addComponent(panel_Menu, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
-					.addGap(10)
-					.addComponent(panel_Interface, GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE)
+					.addComponent(panel_Menu, GroupLayout.PREFERRED_SIZE, 174, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(panel_Interface, GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
 					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addComponent(panel_Menu, GroupLayout.DEFAULT_SIZE, 569, Short.MAX_VALUE)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addComponent(panel_Interface, GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE)
+					.addComponent(panel_Interface, GroupLayout.DEFAULT_SIZE, 539, Short.MAX_VALUE)
 					.addGap(11))
+				.addComponent(panel_Menu, GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
 		);
 		
 		JPanel panel_Champs = new JPanel();
@@ -153,26 +168,6 @@ public class PArticles extends JPanel {
 		JToolBar toolBar = new JToolBar();
 		toolBar.setFloatable(false);
 		toolBar.setOpaque(false);
-		GroupLayout gl_panel_Interface = new GroupLayout(panel_Interface);
-		gl_panel_Interface.setHorizontalGroup(
-			gl_panel_Interface.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_panel_Interface.createSequentialGroup()
-					.addGroup(gl_panel_Interface.createParallelGroup(Alignment.TRAILING)
-						.addComponent(scrollPane, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 528, Short.MAX_VALUE)
-						.addComponent(panel_Champs, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 528, Short.MAX_VALUE)
-						.addComponent(toolBar, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE))
-					.addContainerGap())
-		);
-		gl_panel_Interface.setVerticalGroup(
-			gl_panel_Interface.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_Interface.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(panel_Champs, GroupLayout.PREFERRED_SIZE, 156, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 331, Short.MAX_VALUE)
-					.addGap(13)
-					.addComponent(toolBar, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE))
-		);
 		
 		JLabel lbl_Sortby = new JLabel("Trier par");
 		lbl_Sortby.setIcon(new ImageIcon(PArticles.class.getResource("/images/gestion/Sort-Ascending-32.png")));
@@ -194,8 +189,23 @@ public class PArticles extends JPanel {
 		toolBar.add(textField_Search);
 		textField_Search.setColumns(10);
 		
-		table = new JTable();
+		String col[] = {"Code", "Code Catégorie", "Désignation", "Quantité", "Prix Unitaire"};
+		DefaultTableModel tableModel = new DefaultTableModel(col, 0);		
+		for (int i = 0; i < articles.size(); i++)
+		{
+			int id=articles.get(i).getId();
+			int codeCategorie=articles.get(i).getCodeCategorie();
+			String designation=articles.get(i).getDesignation();
+			int quantite=articles.get(i).getQuantitestock();
+			int prixUnitaire=articles.get(i).getPrixUnitaire();
+			
+			Object[] data= {id, codeCategorie, designation, quantite, prixUnitaire};
+			tableModel.addRow(data);
+		}
+		table = new JTable(tableModel);
+
 		scrollPane.setViewportView(table);
+	
 		
 		JLabel lbl_Code = new JLabel("Code");
 		lbl_Code.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -283,22 +293,23 @@ public class PArticles extends JPanel {
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addGroup(gl_panel_Champs.createParallelGroup(Alignment.TRAILING)
 								.addGroup(gl_panel_Champs.createSequentialGroup()
-									.addComponent(textField_Code, GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+									.addComponent(textField_Code, GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
 									.addGap(18)
 									.addComponent(lbl_Category, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
 									.addPreferredGap(ComponentPlacement.UNRELATED)
-									.addComponent(textField_Category, GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE))
-								.addComponent(textField_Designation, GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE)
+									.addComponent(textField_Category, GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE))
+								.addComponent(textField_Designation, GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)
 								.addGroup(gl_panel_Champs.createSequentialGroup()
-									.addComponent(slider_Quantity, GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
-									.addPreferredGap(ComponentPlacement.UNRELATED)
+									.addGap(4)
+									.addComponent(slider_Quantity, GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+									.addPreferredGap(ComponentPlacement.RELATED)
 									.addComponent(textField_Quantity, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
 									.addPreferredGap(ComponentPlacement.RELATED)
 									.addComponent(lbl_Price, GroupLayout.PREFERRED_SIZE, 72, GroupLayout.PREFERRED_SIZE)
 									.addPreferredGap(ComponentPlacement.RELATED)
 									.addComponent(formattedTextField_Price, GroupLayout.PREFERRED_SIZE, 113, GroupLayout.PREFERRED_SIZE)
 									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(lbl_Euro, GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)))
+									.addComponent(lbl_Euro, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
 							.addGap(20))
 						.addGroup(gl_panel_Champs.createSequentialGroup()
 							.addComponent(btnAjouter, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -324,14 +335,15 @@ public class PArticles extends JPanel {
 						.addComponent(lblDsignation, GroupLayout.PREFERRED_SIZE, 12, GroupLayout.PREFERRED_SIZE)
 						.addComponent(textField_Designation, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_panel_Champs.createParallelGroup(Alignment.TRAILING, false)
-						.addGroup(gl_panel_Champs.createParallelGroup(Alignment.BASELINE)
-							.addComponent(lbl_Euro, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-							.addComponent(formattedTextField_Price, GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
-							.addComponent(lbl_Price, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE)
-							.addComponent(textField_Quantity, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addComponent(slider_Quantity, 0, 0, Short.MAX_VALUE)
-						.addComponent(lbl_Quantity, GroupLayout.DEFAULT_SIZE, 15, Short.MAX_VALUE))
+					.addGroup(gl_panel_Champs.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel_Champs.createParallelGroup(Alignment.TRAILING, false)
+							.addGroup(gl_panel_Champs.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lbl_Euro, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+								.addComponent(formattedTextField_Price, GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
+								.addComponent(lbl_Price, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE)
+								.addComponent(textField_Quantity, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+							.addComponent(lbl_Quantity, GroupLayout.DEFAULT_SIZE, 15, Short.MAX_VALUE))
+						.addComponent(slider_Quantity, 0, 0, Short.MAX_VALUE))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_panel_Champs.createParallelGroup(Alignment.LEADING)
 						.addComponent(btn_Delete, GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
@@ -344,6 +356,29 @@ public class PArticles extends JPanel {
 					.addGap(25))
 		);
 		panel_Champs.setLayout(gl_panel_Champs);
+		GroupLayout gl_panel_Interface = new GroupLayout(panel_Interface);
+		gl_panel_Interface.setHorizontalGroup(
+			gl_panel_Interface.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_Interface.createSequentialGroup()
+					.addGroup(gl_panel_Interface.createParallelGroup(Alignment.LEADING)
+						.addComponent(panel_Champs, GroupLayout.PREFERRED_SIZE, 500, GroupLayout.PREFERRED_SIZE)
+						.addComponent(toolBar, GroupLayout.PREFERRED_SIZE, 500, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_panel_Interface.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
+							.addGap(10)))
+					.addContainerGap())
+		);
+		gl_panel_Interface.setVerticalGroup(
+			gl_panel_Interface.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_Interface.createSequentialGroup()
+					.addGap(11)
+					.addComponent(panel_Champs, GroupLayout.PREFERRED_SIZE, 156, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
+					.addGap(21)
+					.addComponent(toolBar, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE))
+		);
 		panel_Interface.setLayout(gl_panel_Interface);
 		setLayout(groupLayout);
 

@@ -7,6 +7,8 @@ import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
+import java.util.Date;
+import java.util.List;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -29,6 +31,13 @@ import javax.swing.DebugGraphics;
 import java.awt.Cursor;
 import javax.swing.JTabbedPane;
 import javax.swing.table.DefaultTableModel;
+
+import com.global.singleton.GlobalConnection;
+
+import luna_Class.Client;
+import luna_DAO.ClientDAO;
+import luna_DAO.ClientDAOMysql;
+
 import javax.swing.JList;
 import javax.swing.SpinnerListModel;
 import javax.swing.DefaultComboBoxModel;
@@ -439,7 +448,34 @@ public class PCommands extends JPanel {
 			new String[] {
 				"Code", "Code Catégorie", "Désignation", "Quantité", "Prix Unitaire", "Total"
 			}
+			String col[] = {"Code", "Date Creation", "Carte de fid\u00E9lit\u00E9", "Pr\u00E9nom", "Nom", "Adresse","Code Postal", "Fixe", "mobile", "Email", "Remarques"};
+			DefaultTableModel tableModel = new DefaultTableModel(col, 0);		
+			ClientDAO clientDAO=new ClientDAOMysql(GlobalConnection.getInstance());
+			List<Client> clients = clientDAO.getAllClient();
+			for (int i = 0; i < clients.size(); i++)
+			{
+				int id=clients.get(i).getId();
+				Date dateCreation=clients.get(i).getDateCreation();
+				int carteFidelite=clients.get(i).getCartedefidelite();
+				String prenom=clients.get(i).getPrenom();
+				String nom=clients.get(i).getNom();
+				String adresse=clients.get(i).getAdresse();
+				int codePostal=clients.get(i).getCodePostal();
+				int fixe=clients.get(i).getFixe();
+				int mobile=clients.get(i).getMobile();
+				String email=clients.get(i).getEmail();
+				String remarques=clients.get(i).getRemarques();
+				Object[] data= {id, dateCreation, carteFidelite, prenom, nom, adresse, codePostal, fixe, mobile, email, remarques};
+				tableModel.addRow(data);
+			}
+			table = new JTable(tableModel);
+			table.setEnabled(false);
+			scrollPane.setViewportView(table);
 		));
+		
+		table = new JTable(tableModel);
+		table.setEnabled(false);
+		scrollPane.setViewportView(table);
 		scrollPane.setViewportView(table);
 		panel_2.setLayout(gl_panel_2);
 		
