@@ -13,13 +13,8 @@ import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.Window;
 
-
-
-import com.global.singleton.GlobalConnection;
-
-public class Fparametres {
+public class Fparametres extends JFrame{
 
 	private JFrame frame;
 	private JTextField txtJdbcmysqllocalhostluna;
@@ -88,7 +83,7 @@ public class Fparametres {
 		JButton btnAnnuler = new JButton("Annuler");
 		btnAnnuler.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				fermeture();
+				//fermeture();
 			
 			}
 		});
@@ -161,8 +156,5 @@ public class Fparametres {
 					.addGap(55))
 		);
 		frame.getContentPane().setLayout(groupLayout);
-	}
-	public void fermeture() {
-		this.setVisible(false);
 	}
 }

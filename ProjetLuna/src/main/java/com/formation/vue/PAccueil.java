@@ -121,6 +121,13 @@ public class PAccueil extends JPanel {
 		button_4.setBorder(UIManager.getBorder("Button.border"));
 		
 		JButton button_5 = new JButton("");
+		button_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PParametres param=new PParametres();
+				param.setVisible(true);
+				param.setBounds(500, 200, 500, 400);
+			}
+		});
 		button_5.setRolloverIcon(new ImageIcon(PAccueil.class.getResource("/images/accueil/Settings-02-128-actif.png")));
 		button_5.setPressedIcon(new ImageIcon(PAccueil.class.getResource("/images/accueil/Settings-02-128.png")));
 		button_5.setIcon(new ImageIcon(PAccueil.class.getResource("/images/accueil/Settings-02-128.png")));

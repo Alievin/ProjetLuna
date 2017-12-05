@@ -8,17 +8,12 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import java.awt.Dimension;
 
-import com.formation.vue.*;
 
 public class Accueil extends JFrame {
 
 	/**
 	 * Launch the application.
 	 */
-	private PAccueil pAccueil;
-	private PClients pClients;
-	private PArticles pArticles;
-	private PCommands pCommands;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -37,11 +32,11 @@ public class Accueil extends JFrame {
 	 * Create the frame.
 	 */
 	public Accueil() {
-		setMinimumSize(new Dimension(650, 600));
+		setMinimumSize(new Dimension(900, 700));
 		setTitle("Accueil");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Accueil.class.getResource("/images/Moon-32.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 800, 600);
+		setBounds(100, 100, 900, 700);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -61,27 +56,28 @@ public class Accueil extends JFrame {
 	{
 		switch (numPanel) {
 		case 0:
-		    pAccueil=new PAccueil(this);
+			PAccueil pAccueil=new PAccueil(this);
 			setContentPane(pAccueil);
 			break;
 		case 1:
-			pClients=new PClients(this);
+			PClients pClients=new PClients(this);
 			setContentPane(pClients);
 			break;
 		case 2:
-			pArticles=new PArticles(this);
+			PArticles pArticles=new PArticles(this);
 			setContentPane(pArticles);
 			break;
 		case 3:
-			pCommands=new PCommands();
+			PCommands pCommands=new PCommands(this);
 			setContentPane(pCommands);
 			break;
-		/*case 4:
-			setContentPane(fils);
+		case 4:
+			PAjoutModif pAjoutModif=new PAjoutModif(this);
+			setContentPane(pAjoutModif);
 			break;
 		case 5:
-			setContentPane(fils);
-			break;*/
+			//setContentPane();
+			break;
 		}
 		this.revalidate();
 	}

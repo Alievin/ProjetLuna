@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.border.EmptyBorder;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.awt.event.ActionEvent;
 import java.awt.Checkbox;
 import javax.swing.JTextField;
@@ -20,6 +21,16 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JScrollPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableModel;
+
+import com.global.singleton.GlobalConnection;
+
+import luna_Class.Client;
+import luna_DAO.ClientDAO;
+import luna_DAO.ClientDAOMysql;
+import java.util.Date;
+import java.util.ArrayList;
 
 public class PClients extends JPanel {
 	private JTextField textField;
@@ -46,6 +57,11 @@ public class PClients extends JPanel {
 		lbl_Clients.setIcon(new ImageIcon(PClients.class.getResource("/images/gestion/client/People-64-actif.png")));
 		
 		JButton btn_Add = new JButton("Ajouter");
+		btn_Add.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				parent.afficherFenetre(4);
+			}
+		});
 		btn_Add.setForeground(Color.WHITE);
 		btn_Add.setHorizontalAlignment(SwingConstants.LEFT);
 		btn_Add.setPressedIcon(new ImageIcon(PClients.class.getResource("/images/gestion/Add-New-48-actif.png")));
@@ -68,6 +84,7 @@ public class PClients extends JPanel {
 		JButton btn_Edit = new JButton("Modifier");
 		btn_Edit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				parent.afficherFenetre(4);
 			}
 		});
 		btn_Edit.setForeground(Color.WHITE);
@@ -284,9 +301,30 @@ public class PClients extends JPanel {
 					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
 					.addContainerGap())
 		);
-		
-		table = new JTable();
+		String col[] = {"Code", "Date Creation", "Carte de fid\u00E9lit\u00E9", "Pr\u00E9nom", "Nom", "Adresse","Code Postal", "Fixe", "mobile", "Email", "Remarques"};
+		DefaultTableModel tableModel = new DefaultTableModel(col, 0);		
+		ClientDAO clientDAO=new ClientDAOMysql(GlobalConnection.getInstance());
+		List<Client> clients = clientDAO.getAllClient();
+		for (int i = 0; i < clients.size(); i++)
+		{
+			int id=clients.get(i).getId();
+			Date dateCreation=clients.get(i).getDateCreation();
+			int carteFidelite=clients.get(i).getCartedefidelite();
+			String prenom=clients.get(i).getPrenom();
+			String nom=clients.get(i).getNom();
+			String adresse=clients.get(i).getAdresse();
+			int codePostal=clients.get(i).getCodePostal();
+			int fixe=clients.get(i).getFixe();
+			int mobile=clients.get(i).getMobile();
+			String email=clients.get(i).getEmail();
+			String remarques=clients.get(i).getRemarques();
+			Object[] data= {id, dateCreation, carteFidelite, prenom, nom, adresse, codePostal, fixe, mobile, email, remarques};
+			tableModel.addRow(data);
+		}
+		table = new JTable(tableModel);
+		table.setEnabled(false);
 		scrollPane.setViewportView(table);
+		
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)

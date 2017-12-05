@@ -179,9 +179,11 @@ public class PArticles extends JPanel {
 		toolBar.add(lbl_Sortby);
 		
 		JRadioButton rdbtn_Code = new JRadioButton("code");
+		rdbtn_Code.setOpaque(false);
 		toolBar.add(rdbtn_Code);
 		
 		JRadioButton rdbtn_Category = new JRadioButton("cat\u00E9gorie");
+		rdbtn_Category.setOpaque(false);
 		toolBar.add(rdbtn_Category);
 		
 		JLabel lbl_search = new JLabel("Recherche");

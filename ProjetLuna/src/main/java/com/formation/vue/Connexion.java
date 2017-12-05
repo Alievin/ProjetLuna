@@ -12,10 +12,11 @@ import java.awt.Color;
 import javax.swing.border.MatteBorder;
 
 import com.global.singleton.GlobalConnection;
+import com.sun.org.apache.xalan.internal.utils.FeatureManager;
 
-
-
-
+import jdk.nashorn.internal.objects.Global;
+import jdk.nashorn.internal.runtime.GlobalConstants;
+import luna_DAO.UserDAO;
 import luna_DAO.UserDAOMysql;
 
 import java.awt.Font;
@@ -31,7 +32,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
+import java.sql.SQLException;
 
 public class Connexion extends JFrame {
 
@@ -166,6 +167,12 @@ public class Connexion extends JFrame {
 		btn_Validate.setIcon(new ImageIcon(Connexion.class.getResource("/images/connection/Power-48.png")));
 		
 		JButton btn_Settings = new JButton("Param\u00E8tres");
+		btn_Settings.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PParametres param=new PParametres();
+				param.setVisible(true);
+				param.setBounds(500, 200, 500, 400);			}
+		});
 		btn_Settings.setHorizontalAlignment(SwingConstants.LEFT);
 		btn_Settings.setHorizontalTextPosition(SwingConstants.RIGHT);
 		btn_Settings.setPressedIcon(new ImageIcon(Connexion.class.getResource("/images/connection/Customize-01-48-actif.png")));

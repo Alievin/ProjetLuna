@@ -18,6 +18,8 @@ import javax.swing.border.MatteBorder;
 import javax.swing.JCheckBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JTextArea;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class PAjoutModif extends JPanel {
 	private JTextField textField_Code;
@@ -33,7 +35,7 @@ public class PAjoutModif extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public PAjoutModif() {
+	public PAjoutModif(Accueil parent) {
 		setBorder(null);
 		
 		Panel panel = new Panel();
@@ -84,6 +86,11 @@ public class PAjoutModif extends JPanel {
 		button_6.setBorder(new EmptyBorder(0, 0, 0, 0));
 		
 		JButton button_7 = new JButton("Accueil");
+		button_7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				parent.afficherFenetre(1);
+			}
+		});
 		button_7.setPressedIcon(new ImageIcon(PAjoutModif.class.getResource("/images/gestion/Home-48-actif.png")));
 		button_7.setIcon(new ImageIcon(PAjoutModif.class.getResource("/images/gestion/Home-48.png")));
 		button_7.setOpaque(false);

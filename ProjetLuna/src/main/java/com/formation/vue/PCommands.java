@@ -47,7 +47,7 @@ public class PCommands extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public PCommands() {
+	public PCommands(Accueil parent) {
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(204, 204, 0));
@@ -59,6 +59,7 @@ public class PCommands extends JPanel {
 		btnAccueil.setBorder(null);
 		btnAccueil.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				parent.afficherFenetre(0);
 			}
 		});
 		btnAccueil.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -75,6 +76,7 @@ public class PCommands extends JPanel {
 		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				parent.afficherFenetre(0);
 			}
 		});
 		
