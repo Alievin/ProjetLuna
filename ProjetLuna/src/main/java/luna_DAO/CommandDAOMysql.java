@@ -35,7 +35,7 @@ public class CommandDAOMysql implements CommandDAO {
 				command.setId(result.getInt("id"));
 				command.setLibelle(result.getString("libelle"));
 				command.setIdclient(result.getInt("idclient"));
-				command.setDatecommand(result.getDate("datecommand"));
+				command.setDatecommand(result.getString("datecommand"));
 				commands.add(command);
 			}
 
@@ -57,7 +57,7 @@ public class CommandDAOMysql implements CommandDAO {
 				command.setId(result.getInt("id"));
 				command.setLibelle(result.getString("libelle"));
 				command.setIdclient(result.getInt("idclient"));
-				command.setDatecommand(result.getDate("datecommand"));
+				command.setDatecommand(result.getString("datecommand"));
 			}
 
 		} catch (SQLException e) {

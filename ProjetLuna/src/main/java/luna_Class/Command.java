@@ -8,10 +8,10 @@ public class Command {
 	private int id;
 	private String libelle;
 	private int idclient;
-	private Date datecommand;
+	private String datecommand;
 
 	// CONSTRUCTEUR
-	public Command(int id, String libelle, int idclient, Date datecommand) {
+	public Command(int id, String libelle, int idclient, String datecommand) {
 		super();
 		this.id = id;
 		this.libelle = libelle;
@@ -51,11 +51,11 @@ public class Command {
 	}
 
 	// - - GETTER & SETTER DE L'ATTRIBUT "datecommand" - - //
-	public Date getDatecommand() {
+	public String getDatecommand() {
 		return datecommand;
 	}
 
-	public void setDatecommand(Date datecommand) {
+	public void setDatecommand(String datecommand) {
 		this.datecommand = datecommand;
 	}
 
