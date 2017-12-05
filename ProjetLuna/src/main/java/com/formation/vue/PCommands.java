@@ -32,6 +32,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JList;
 import javax.swing.SpinnerListModel;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.SwingConstants;
 
 public class PCommands extends JPanel {
 	private JTextField textField;
@@ -52,9 +53,10 @@ public class PCommands extends JPanel {
 		panel.setBackground(new Color(204, 204, 0));
 		
 		JButton btnAccueil = new JButton("Accueil");
+		btnAccueil.setHorizontalAlignment(SwingConstants.LEFT);
 		btnAccueil.setPressedIcon(new ImageIcon(PCommands.class.getResource("/images/gestion/Home-48-actif.png")));
 		btnAccueil.setFocusPainted(false);
-		btnAccueil.setBorder(new LineBorder(new Color(255, 255, 255), 2));
+		btnAccueil.setBorder(null);
 		btnAccueil.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -64,8 +66,9 @@ public class PCommands extends JPanel {
 		btnAccueil.setIcon(new ImageIcon(PCommands.class.getResource("/images/gestion/Home-48.png")));
 		
 		JButton btnNewButton_1 = new JButton("Commandes existantes");
-		btnNewButton_1.setPressedIcon(new ImageIcon(PCommands.class.getResource("/images/gestion/commande/Receipt-48-actif.png")));
+		btnNewButton_1.setBorder(null);
 		btnNewButton_1.setFocusPainted(false);
+		btnNewButton_1.setPressedIcon(new ImageIcon(PCommands.class.getResource("/images/gestion/commande/Receipt-48-actif.png")));
 		btnNewButton_1.setForeground(new Color(255, 255, 255));
 		btnNewButton_1.setIcon(new ImageIcon(PCommands.class.getResource("/images/gestion/commande/Receipt-48.png")));
 		btnNewButton_1.setContentAreaFilled(false);
@@ -76,6 +79,7 @@ public class PCommands extends JPanel {
 		});
 		
 		JButton btnNewButton_2 = new JButton("Supprimer");
+		btnNewButton_2.setBorder(null);
 		btnNewButton_2.setPressedIcon(new ImageIcon(PCommands.class.getResource("/images/gestion/Cancel-48-actif.png")));
 		btnNewButton_2.setFocusPainted(false);
 		btnNewButton_2.setIcon(new ImageIcon(PCommands.class.getResource("/images/gestion/Cancel-48.png")));
@@ -84,6 +88,8 @@ public class PCommands extends JPanel {
 		btnNewButton_2.setContentAreaFilled(false);
 		
 		JButton btnNewButton_3 = new JButton("Supprimer toutes les lignes");
+		btnNewButton_3.setHorizontalAlignment(SwingConstants.LEFT);
+		btnNewButton_3.setBorder(null);
 		btnNewButton_3.setFocusPainted(false);
 		btnNewButton_3.setPressedIcon(new ImageIcon(PCommands.class.getResource("/images/gestion/Garbage-Open-48-actif.png")));
 		btnNewButton_3.setIcon(new ImageIcon(PCommands.class.getResource("/images/gestion/Garbage-Open-48.png")));
@@ -96,6 +102,7 @@ public class PCommands extends JPanel {
 		});
 		
 		JButton btnValiderCommande = new JButton("Valider commande");
+		btnValiderCommande.setBorder(null);
 		btnValiderCommande.setPressedIcon(new ImageIcon(PCommands.class.getResource("/images/gestion/commande/Shopping-Cart-05-48-actif.png")));
 		btnValiderCommande.setFocusPainted(false);
 		btnValiderCommande.setIcon(new ImageIcon(PCommands.class.getResource("/images/gestion/commande/Shopping-Cart-05-48.png")));
@@ -104,6 +111,8 @@ public class PCommands extends JPanel {
 		btnValiderCommande.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
 		JButton btnAperu = new JButton("Aper\u00E7u");
+		btnAperu.setHorizontalAlignment(SwingConstants.LEFT);
+		btnAperu.setBorder(null);
 		btnAperu.setFocusPainted(false);
 		btnAperu.setPressedIcon(new ImageIcon(PCommands.class.getResource("/images/gestion/Preview-48-actif.png")));
 		btnAperu.setIcon(new ImageIcon(PCommands.class.getResource("/images/gestion/Preview-48.png")));
@@ -116,6 +125,8 @@ public class PCommands extends JPanel {
 		});
 		
 		JButton btnImprimer = new JButton("Imprimer");
+		btnImprimer.setHorizontalAlignment(SwingConstants.LEFT);
+		btnImprimer.setBorder(null);
 		btnImprimer.setPressedIcon(new ImageIcon(PCommands.class.getResource("/images/gestion/Printer-48-actif.png")));
 		btnImprimer.setFocusPainted(false);
 		btnImprimer.setIcon(new ImageIcon(PCommands.class.getResource("/images/gestion/Printer-48.png")));
@@ -124,6 +135,7 @@ public class PCommands extends JPanel {
 		btnImprimer.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
 		JButton btnExport = new JButton("Export");
+		btnExport.setBorder(null);
 		btnExport.setFocusPainted(false);
 		btnExport.setPressedIcon(new ImageIcon(PCommands.class.getResource("/images/gestion/Data-Export-48-actif.png")));
 		btnExport.setIcon(new ImageIcon(PCommands.class.getResource("/images/gestion/Data-Export-48.png")));
@@ -146,10 +158,10 @@ public class PCommands extends JPanel {
 						.addComponent(btnNewButton_2)
 						.addComponent(btnNewButton_1)
 						.addComponent(btnValiderCommande)
-						.addComponent(btnNewButton_3, GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
 						.addComponent(btnAperu)
 						.addComponent(btnImprimer)
-						.addComponent(btnExport))
+						.addComponent(btnExport)
+						.addComponent(btnNewButton_3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 					.addContainerGap())
 		);
 		gl_panel.setVerticalGroup(
@@ -158,19 +170,19 @@ public class PCommands extends JPanel {
 					.addContainerGap()
 					.addComponent(lblCommandes)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnNewButton_1)
+					.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 46, Short.MAX_VALUE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnNewButton_2, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
+					.addComponent(btnNewButton_2, GroupLayout.PREFERRED_SIZE, 45, Short.MAX_VALUE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnNewButton_3, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+					.addComponent(btnNewButton_3, GroupLayout.PREFERRED_SIZE, 46, Short.MAX_VALUE)
 					.addGap(4)
-					.addComponent(btnValiderCommande, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
+					.addComponent(btnValiderCommande, GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
 					.addGap(18)
-					.addComponent(btnAperu, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+					.addComponent(btnAperu, GroupLayout.PREFERRED_SIZE, 46, Short.MAX_VALUE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnImprimer)
-					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addComponent(btnExport, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE)
+					.addComponent(btnImprimer, GroupLayout.PREFERRED_SIZE, 46, Short.MAX_VALUE)
+					.addGap(35)
+					.addComponent(btnExport, GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(btnAccueil)
 					.addContainerGap())
@@ -193,9 +205,9 @@ public class PCommands extends JPanel {
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 241, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(panel_1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 543, Short.MAX_VALUE)
-						.addComponent(panel_3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+						.addComponent(panel_1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 539, Short.MAX_VALUE)
+						.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 539, Short.MAX_VALUE)
+						.addComponent(panel_3, GroupLayout.DEFAULT_SIZE, 539, Short.MAX_VALUE))
 					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
@@ -204,9 +216,9 @@ public class PCommands extends JPanel {
 					.addContainerGap()
 					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 266, GroupLayout.PREFERRED_SIZE)
+					.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(panel_3, GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
+					.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 156, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap())
 				.addGroup(groupLayout.createSequentialGroup()
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 549, Short.MAX_VALUE)
@@ -238,19 +250,19 @@ public class PCommands extends JPanel {
 		gl_panel_3.setHorizontalGroup(
 			gl_panel_3.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_3.createSequentialGroup()
-					.addContainerGap(292, Short.MAX_VALUE)
-					.addComponent(btnValiderLaCommande, GroupLayout.PREFERRED_SIZE, 222, GroupLayout.PREFERRED_SIZE)
-					.addGap(29))
+					.addGap(288)
+					.addComponent(btnValiderLaCommande, GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
+					.addGap(81))
 				.addGroup(gl_panel_3.createSequentialGroup()
 					.addGap(60)
-					.addComponent(lblModeDePaiement, GroupLayout.PREFERRED_SIZE, 163, GroupLayout.PREFERRED_SIZE)
+					.addComponent(lblModeDePaiement, GroupLayout.PREFERRED_SIZE, 146, Short.MAX_VALUE)
 					.addGap(18)
-					.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addComponent(comboBox, 0, 64, Short.MAX_VALUE)
 					.addGap(64)
 					.addComponent(list, GroupLayout.PREFERRED_SIZE, 1, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(textField_6, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(54, Short.MAX_VALUE))
+					.addComponent(textField_6, GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
+					.addGap(102))
 		);
 		gl_panel_3.setVerticalGroup(
 			gl_panel_3.createParallelGroup(Alignment.LEADING)
@@ -271,6 +283,8 @@ public class PCommands extends JPanel {
 		panel_3.setLayout(gl_panel_3);
 		
 		JButton btnNewButton_4 = new JButton("S\u00E9lectionner un article");
+		btnNewButton_4.setFocusPainted(false);
+		btnNewButton_4.setPressedIcon(new ImageIcon(PCommands.class.getResource("/images/gestion/Search-32-actif.png")));
 		btnNewButton_4.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 		btnNewButton_4.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		btnNewButton_4.setContentAreaFilled(false);
@@ -312,14 +326,23 @@ public class PCommands extends JPanel {
 		JSpinner spinner = new JSpinner();
 		
 		JButton btnAjouter = new JButton("Ajouter");
+		btnAjouter.setFocusPainted(false);
+		btnAjouter.setPressedIcon(new ImageIcon(PCommands.class.getResource("/images/gestion/Add-New-48-actif.png")));
+		btnAjouter.setBorder(null);
 		btnAjouter.setContentAreaFilled(false);
 		btnAjouter.setIcon(new ImageIcon(PCommands.class.getResource("/images/gestion/Add-New-48.png")));
 		
 		JButton btnModifier = new JButton("Modifier");
+		btnModifier.setFocusPainted(false);
+		btnModifier.setPressedIcon(new ImageIcon(PCommands.class.getResource("/images/gestion/Data-Edit-48-actif.png")));
+		btnModifier.setBorder(null);
 		btnModifier.setContentAreaFilled(false);
 		btnModifier.setIcon(new ImageIcon(PCommands.class.getResource("/images/gestion/Data-Edit-48.png")));
 		
 		JButton btnSupprimer = new JButton("Supprimer");
+		btnSupprimer.setFocusPainted(false);
+		btnSupprimer.setPressedIcon(new ImageIcon(PCommands.class.getResource("/images/gestion/Cancel-48-actif.png")));
+		btnSupprimer.setBorder(null);
 		btnSupprimer.setIcon(new ImageIcon(PCommands.class.getResource("/images/gestion/Cancel-48.png")));
 		btnSupprimer.setContentAreaFilled(false);
 		
@@ -328,47 +351,53 @@ public class PCommands extends JPanel {
 		gl_panel_2.setHorizontalGroup(
 			gl_panel_2.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_panel_2.createSequentialGroup()
+					.addContainerGap()
 					.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel_2.createSequentialGroup()
-							.addContainerGap()
 							.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
 								.addGroup(gl_panel_2.createSequentialGroup()
-									.addComponent(btnNewButton_4, GroupLayout.PREFERRED_SIZE, 181, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.UNRELATED)
-									.addComponent(lblCode, GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
-								.addGroup(gl_panel_2.createSequentialGroup()
-									.addGap(4)
-									.addComponent(lblNewLabel_1)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-									.addGap(18)
-									.addComponent(lblMontant, GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)))
-							.addPreferredGap(ComponentPlacement.UNRELATED)
+									.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
+										.addGroup(gl_panel_2.createSequentialGroup()
+											.addComponent(btnNewButton_4, GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
+											.addPreferredGap(ComponentPlacement.UNRELATED))
+										.addGroup(gl_panel_2.createSequentialGroup()
+											.addGap(4)
+											.addComponent(lblNewLabel_1, GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
+											.addPreferredGap(ComponentPlacement.RELATED)
+											.addComponent(textField_4, GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
+											.addGap(41)))
+									.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
+										.addComponent(lblMontant, GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+										.addComponent(lblCode, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE))
+									.addPreferredGap(ComponentPlacement.RELATED))
+								.addGroup(Alignment.TRAILING, gl_panel_2.createSequentialGroup()
+									.addGap(68)
+									.addComponent(btnAjouter, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+									.addGap(74)))
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGroup(gl_panel_2.createParallelGroup(Alignment.TRAILING)
+								.addComponent(btnModifier, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
+								.addComponent(textField_2, GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
+								.addComponent(textField_5, GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE))
+							.addPreferredGap(ComponentPlacement.RELATED)
 							.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
 								.addGroup(gl_panel_2.createSequentialGroup()
-									.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
+									.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
+										.addComponent(lblQuantit)
+										.addGroup(Alignment.TRAILING, gl_panel_2.createSequentialGroup()
+											.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
+											.addPreferredGap(ComponentPlacement.RELATED)))
 									.addGap(18)
-									.addComponent(lblNewLabel))
-								.addComponent(textField_5, GroupLayout.PREFERRED_SIZE, 69, GroupLayout.PREFERRED_SIZE))
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addGroup(gl_panel_2.createParallelGroup(Alignment.TRAILING, false)
-								.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, 136, GroupLayout.PREFERRED_SIZE)
-								.addGroup(gl_panel_2.createSequentialGroup()
-									.addComponent(lblQuantit)
-									.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addComponent(spinner, GroupLayout.PREFERRED_SIZE, 82, GroupLayout.PREFERRED_SIZE)))
-							.addGap(24))
-						.addGroup(gl_panel_2.createSequentialGroup()
-							.addGap(20)
-							.addComponent(btnAjouter)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(btnModifier, GroupLayout.PREFERRED_SIZE, 123, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(btnSupprimer, GroupLayout.PREFERRED_SIZE, 145, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_panel_2.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 511, Short.MAX_VALUE)))
-					.addContainerGap())
+									.addGroup(gl_panel_2.createParallelGroup(Alignment.TRAILING)
+										.addComponent(spinner, GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+										.addComponent(textField_3, GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE))
+									.addGap(24))
+								.addGroup(Alignment.TRAILING, gl_panel_2.createSequentialGroup()
+									.addGap(59)
+									.addComponent(btnSupprimer, GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
+									.addGap(41))))
+						.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 563, Short.MAX_VALUE))
+					.addGap(0))
 		);
 		gl_panel_2.setVerticalGroup(
 			gl_panel_2.createParallelGroup(Alignment.LEADING)
@@ -377,16 +406,16 @@ public class PCommands extends JPanel {
 					.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnNewButton_4, GroupLayout.PREFERRED_SIZE, 37, GroupLayout.PREFERRED_SIZE)
 						.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblCode, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
 						.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblCode, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
+						.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblNewLabel_1)
 						.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblMontant)
-						.addComponent(spinner, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblQuantit)
+						.addComponent(spinner, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(textField_5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
@@ -394,8 +423,8 @@ public class PCommands extends JPanel {
 						.addComponent(btnModifier)
 						.addComponent(btnSupprimer))
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 92, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
+					.addGap(12))
 		);
 		
 		table = new JTable();
@@ -430,6 +459,8 @@ public class PCommands extends JPanel {
 		lblNomDuClient.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
 		JButton btnNewButton = new JButton("S\u00E9lectionner le client");
+		btnNewButton.setPressedIcon(new ImageIcon(PCommands.class.getResource("/images/gestion/Search-32-actif.png")));
+		btnNewButton.setFocusPainted(false);
 		btnNewButton.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(255, 51, 0)));
 		btnNewButton.setContentAreaFilled(false);
 		btnNewButton.setBackground(Color.ORANGE);
@@ -441,19 +472,21 @@ public class PCommands extends JPanel {
 				.addGroup(gl_panel_1.createSequentialGroup()
 					.addGap(52)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblNomDuClient)
-						.addComponent(lblCommandes_1))
-					.addGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING)
-						.addGroup(Alignment.LEADING, gl_panel_1.createSequentialGroup()
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(btnNewButton, GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE))
 						.addGroup(gl_panel_1.createSequentialGroup()
-							.addComponent(textField, GroupLayout.PREFERRED_SIZE, 121, GroupLayout.PREFERRED_SIZE)
+							.addComponent(lblNomDuClient, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addGap(55))
+						.addComponent(lblCommandes_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel_1.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnNewButton, GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE))
+						.addGroup(gl_panel_1.createSequentialGroup()
+							.addComponent(textField, GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
 							.addGap(33)
-							.addComponent(lblDate)
+							.addComponent(lblDate, GroupLayout.PREFERRED_SIZE, 23, Short.MAX_VALUE)
 							.addGap(18)
-							.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE)
-							.addGap(35)))
+							.addComponent(textField_1, GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
+							.addGap(74)))
 					.addContainerGap())
 		);
 		gl_panel_1.setVerticalGroup(

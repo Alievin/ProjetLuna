@@ -232,7 +232,7 @@ public class Connexion extends JFrame {
 		
 	}
 	public void fermeture(){
-		super.dispose();
+		this.setVisible(false);
 	}
 	public  void erreurConnexion(){
 		JOptionPane.showMessageDialog(this,"Erreur de connexion");

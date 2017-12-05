@@ -21,6 +21,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JToolBar;
 import javax.swing.JRadioButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class PArticles extends JPanel {
 	private JTextField textField_Code;
@@ -33,7 +35,7 @@ public class PArticles extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public PArticles() {
+	public PArticles(Accueil parent) {
 		setBackground(new Color(250, 250, 210));
 		
 		Panel panel_Menu = new Panel();
@@ -74,6 +76,11 @@ public class PArticles extends JPanel {
 		button_6.setBorder(new EmptyBorder(0, 0, 0, 0));
 		
 		JButton btnQuitter = new JButton("Accueil");
+		btnQuitter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				parent.afficherFenetre(0);
+			}
+		});
 		btnQuitter.setPressedIcon(new ImageIcon(PArticles.class.getResource("/images/gestion/Home-48-actif.png")));
 		btnQuitter.setIcon(new ImageIcon(PArticles.class.getResource("/images/gestion/Home-48.png")));
 		btnQuitter.setOpaque(false);
@@ -226,30 +233,40 @@ public class PArticles extends JPanel {
 		formattedTextField_Price.setHorizontalAlignment(SwingConstants.RIGHT);
 		
 		JButton btnAjouter = new JButton("Ajouter");
+		btnAjouter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnAjouter.setPressedIcon(new ImageIcon(PArticles.class.getResource("/images/gestion/Add-New-48-actif.png")));
-		btnAjouter.setFocusPainted(false);
 		btnAjouter.setContentAreaFilled(false);
+		btnAjouter.setFocusPainted(false);
+		btnAjouter.setBorder(new EmptyBorder(0, 0, 0, 0));
 		btnAjouter.setIcon(new ImageIcon(PArticles.class.getResource("/images/gestion/Add-New-48.png")));
 		
 		JLabel lbl_Euro = new JLabel("\u20AC");
 		
 		JButton btn_Edit = new JButton("Modifier");
+		btn_Edit.setEnabled(false);
 		btn_Edit.setPressedIcon(new ImageIcon(PArticles.class.getResource("/images/gestion/Data-Edit-48-actif.png")));
 		btn_Edit.setContentAreaFilled(false);
-		btn_Edit.setIcon(new ImageIcon(PArticles.class.getResource("/images/gestion/Data-Edit-48.png")));
 		btn_Edit.setFocusPainted(false);
+		btn_Edit.setBorder(new EmptyBorder(0, 0, 0, 0));
+		btn_Edit.setIcon(new ImageIcon(PArticles.class.getResource("/images/gestion/Data-Edit-48.png")));
 		
 		JButton btn_Erase = new JButton("Supprimer");
+		btn_Erase.setEnabled(false);
 		btn_Erase.setPressedIcon(new ImageIcon(PArticles.class.getResource("/images/gestion/Garbage-Open-48-actif.png")));
 		btn_Erase.setIcon(new ImageIcon(PArticles.class.getResource("/images/gestion/Garbage-Open-48.png")));
-		btn_Erase.setFocusPainted(false);
 		btn_Erase.setContentAreaFilled(false);
+		btn_Erase.setFocusPainted(false);
+		btn_Erase.setBorder(new EmptyBorder(0, 0, 0, 0));
 		
 		JButton btn_Delete = new JButton("Effacer");
 		btn_Delete.setIcon(new ImageIcon(PArticles.class.getResource("/images/gestion/Cancel-48.png")));
 		btn_Delete.setPressedIcon(new ImageIcon(PArticles.class.getResource("/images/gestion/Cancel-48-actif.png")));
-		btn_Delete.setFocusPainted(false);
 		btn_Delete.setContentAreaFilled(false);
+		btn_Delete.setFocusPainted(false);
+		btn_Delete.setBorder(new EmptyBorder(0, 0, 0, 0));
 		GroupLayout gl_panel_Champs = new GroupLayout(panel_Champs);
 		gl_panel_Champs.setHorizontalGroup(
 			gl_panel_Champs.createParallelGroup(Alignment.LEADING)
@@ -264,14 +281,14 @@ public class PArticles extends JPanel {
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addGroup(gl_panel_Champs.createParallelGroup(Alignment.TRAILING)
 								.addGroup(gl_panel_Champs.createSequentialGroup()
-									.addComponent(textField_Code, GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
+									.addComponent(textField_Code, GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
 									.addGap(18)
 									.addComponent(lbl_Category, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
 									.addPreferredGap(ComponentPlacement.UNRELATED)
-									.addComponent(textField_Category, GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))
-								.addComponent(textField_Designation, GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE)
+									.addComponent(textField_Category, GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE))
+								.addComponent(textField_Designation, GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE)
 								.addGroup(gl_panel_Champs.createSequentialGroup()
-									.addComponent(slider_Quantity, GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
+									.addComponent(slider_Quantity, GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
 									.addPreferredGap(ComponentPlacement.UNRELATED)
 									.addComponent(textField_Quantity, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
 									.addPreferredGap(ComponentPlacement.RELATED)
@@ -279,16 +296,16 @@ public class PArticles extends JPanel {
 									.addPreferredGap(ComponentPlacement.RELATED)
 									.addComponent(formattedTextField_Price, GroupLayout.PREFERRED_SIZE, 113, GroupLayout.PREFERRED_SIZE)
 									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(lbl_Euro, GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)))
+									.addComponent(lbl_Euro, GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)))
 							.addGap(20))
 						.addGroup(gl_panel_Champs.createSequentialGroup()
-							.addComponent(btnAjouter, GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
+							.addComponent(btnAjouter, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(btn_Edit, GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+							.addComponent(btn_Edit, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(btn_Erase, GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+							.addComponent(btn_Erase, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(btn_Delete, GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+							.addComponent(btn_Delete, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 							.addContainerGap())))
 		);
 		gl_panel_Champs.setVerticalGroup(
@@ -317,7 +334,7 @@ public class PArticles extends JPanel {
 					.addGroup(gl_panel_Champs.createParallelGroup(Alignment.LEADING)
 						.addComponent(btn_Delete, GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
 						.addGroup(gl_panel_Champs.createParallelGroup(Alignment.BASELINE)
-							.addComponent(btnAjouter, GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
+							.addComponent(btnAjouter, GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
 							.addGroup(gl_panel_Champs.createSequentialGroup()
 								.addGap(6)
 								.addComponent(btn_Edit, GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE))

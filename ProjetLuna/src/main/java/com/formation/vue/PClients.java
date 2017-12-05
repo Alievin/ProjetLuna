@@ -35,7 +35,7 @@ public class PClients extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public PClients() {
+	public PClients(Accueil parent) {
 		setBackground(new Color(230, 230, 250));
 		
 		Panel panel_Menu = new Panel();
@@ -124,6 +124,11 @@ public class PClients extends JPanel {
 		btn_Export.setBorder(new EmptyBorder(0, 0, 0, 0));
 		
 		JButton btnCcueil = new JButton("Accueil");
+		btnCcueil.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				parent.afficherFenetre(0);
+			}
+		});
 		btnCcueil.setForeground(Color.WHITE);
 		btnCcueil.setPressedIcon(new ImageIcon(PClients.class.getResource("/images/gestion/Home-48-actif.png")));
 		btnCcueil.setIcon(new ImageIcon(PClients.class.getResource("/images/gestion/Home-48.png")));
@@ -289,9 +294,9 @@ public class PClients extends JPanel {
 					.addGap(34)
 					.addComponent(lbl_Code, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
 					.addComponent(textField, GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
-					.addGap(23)
+					.addGap(17)
 					.addComponent(label, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-					.addGap(4)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(textField_7, GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
 					.addGap(10)
 					.addComponent(checkbox, GroupLayout.PREFERRED_SIZE, 94, GroupLayout.PREFERRED_SIZE))
@@ -305,8 +310,9 @@ public class PClients extends JPanel {
 					.addComponent(textField_2, GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
 					.addGap(10))
 				.addGroup(gl_panel.createSequentialGroup()
-					.addGap(20)
+					.addContainerGap()
 					.addComponent(lbl_Address, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
+					.addGap(10)
 					.addComponent(textField_4, GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
 					.addGap(10))
 				.addGroup(gl_panel.createSequentialGroup()
@@ -348,11 +354,10 @@ public class PClients extends JPanel {
 							.addGap(1)
 							.addComponent(textField, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_panel.createSequentialGroup()
-							.addGap(4)
-							.addComponent(label, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_panel.createSequentialGroup()
 							.addGap(1)
-							.addComponent(textField_7, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE))
+							.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+								.addComponent(textField_7, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE)
+								.addComponent(label, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE)))
 						.addComponent(checkbox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(7)
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
@@ -367,11 +372,9 @@ public class PClients extends JPanel {
 							.addGap(2)
 							.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE)))
 					.addGap(6)
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel.createSequentialGroup()
-							.addGap(2)
-							.addComponent(lbl_Address))
-						.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE))
+					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lbl_Address))
 					.addGap(13)
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel.createSequentialGroup()
