@@ -44,7 +44,7 @@ public class PAjoutModif extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public PAjoutModif(Accueil parent) {
+	public PAjoutModif(Accueil parent, boolean ajoutOuModif) {
 		setBorder(null);
 		
 		Panel panel = new Panel();
@@ -68,7 +68,14 @@ public class PAjoutModif extends JPanel {
 										textField_Email.getText(),
 										textPane.getText());
 				ClientDAO clientDAO=new ClientDAOMysql(GlobalConnection.getInstance());
-				clientDAO.insertClient(client);
+				if(ajoutOuModif==false)
+				{
+					clientDAO.insertClient(client);
+				}
+				else
+				{
+					clientDAO.updateClient(client);
+				}
 			}
 		});
 		btnSauvegarder.setPressedIcon(new ImageIcon(PAjoutModif.class.getResource("/images/gestion/Save-48-actif.png")));
@@ -422,5 +429,6 @@ public class PAjoutModif extends JPanel {
 		textPane.setText(clients.get(numClients).getRemarques());
 		textField_Date.setText(String.valueOf(clients.get(numClients).getDateCreation()));
 		textField_Zip.setText(String.valueOf(clients.get(numClients).getCodePostal()));
+		chckbx_Fidelitycard.setSelected((clients.get(numClients).getCartedefidelite()) != 0);
 	}
 }

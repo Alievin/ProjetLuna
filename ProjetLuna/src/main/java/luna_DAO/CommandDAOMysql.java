@@ -8,7 +8,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import luna_Class.Article;
 import luna_Class.Command;
 
 public class CommandDAOMysql implements CommandDAO {

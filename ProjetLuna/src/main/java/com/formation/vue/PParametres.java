@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import com.global.singleton.GlobalConnection;
+
 import javax.swing.JTextField;
 import java.awt.Font;
 import javax.swing.JLabel;
@@ -58,6 +61,10 @@ public class PParametres extends JFrame {
 		textField_1.setColumns(10);
 		
 		JButton button = new JButton("Valider");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		button.setFont(new Font("Tahoma", Font.BOLD, 12));
 		
 		JLabel label_1 = new JLabel("Mot de passe :");

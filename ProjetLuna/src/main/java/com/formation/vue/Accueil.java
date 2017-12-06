@@ -72,11 +72,11 @@ public class Accueil extends JFrame {
 			setContentPane(pCommands);
 			break;
 		case 4:
-			PAjoutModif pAjout=new PAjoutModif(this);
+			PAjoutModif pAjout=new PAjoutModif(this, false);
 			setContentPane(pAjout);
 			break;
 		case 5:
-			PAjoutModif pModif=new PAjoutModif(this);
+			PAjoutModif pModif=new PAjoutModif(this, true);
 			pModif.doubleClicked(args[1]);
 			setContentPane(pModif);
 			break;

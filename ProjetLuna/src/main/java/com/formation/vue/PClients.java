@@ -100,6 +100,13 @@ public class PClients extends JPanel {
 		btn_Edit.setBorder(new EmptyBorder(0, 0, 0, 0));
 		
 		JButton btn_Delete = new JButton("Supprimer");
+		btn_Delete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int selected=table.getSelectedRow();
+				clientDAO.removeClient(selected);
+				refresh();
+			}
+		});
 		btn_Delete.setForeground(Color.WHITE);
 		btn_Delete.setPressedIcon(new ImageIcon(PClients.class.getResource("/images/gestion/Garbage-Open-48-actif.png")));
 		btn_Delete.setIcon(new ImageIcon(PClients.class.getResource("/images/gestion/Garbage-Open-48.png")));
@@ -248,6 +255,7 @@ public class PClients extends JPanel {
 		lbl_Mobile.setHorizontalAlignment(SwingConstants.RIGHT);
 		
 		Checkbox checkbox = new Checkbox("Carte de fid\u00E9lit\u00E9");
+		checkbox.setState(clients.get(0).getCartedefidelite()!=0);
 		
 		textField = new JTextField();
 		textField.setColumns(10);
@@ -350,6 +358,7 @@ public class PClients extends JPanel {
 					textField_6.setText(clients.get(selected).getEmail());
 					textPane.setText(clients.get(selected).getRemarques());
 					textField_7.setText(String.valueOf(clients.get(selected).getDateCreation()));
+					checkbox.setState(clients.get(selected).getCartedefidelite()!=0);
 				}
 				else
 				{
@@ -494,5 +503,9 @@ public class PClients extends JPanel {
 		);
 		setLayout(groupLayout);
 
+	}
+	public void refresh()
+	{
+		this.revalidate();
 	}
 }

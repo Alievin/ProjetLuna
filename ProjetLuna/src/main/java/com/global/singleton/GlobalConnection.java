@@ -24,4 +24,7 @@ public class GlobalConnection {
 		}
 		return connect;
 	}
+	public void setUrl(String url) {this.url=url;}
+	public void setUser(String user) {this.user=user;}
+	public void setPasswd(String passwd) {this.passwd=passwd;}
 }
